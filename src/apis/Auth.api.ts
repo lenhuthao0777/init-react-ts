@@ -1,12 +1,12 @@
 import apiService from '@src/services/AxiosClient'
 import CommonApi from '.'
 
-const baseUrl = 'user'
-
 class Auth extends CommonApi {
-  static login(dispatch?: () => void, body?: any) {
+  static baseUrl = 'user'
+
+  static login(dispatch?: () => void, body?: any): Promise<any> {
     return apiService(dispatch)
-      .post(`${baseUrl}/login`, body)
+      .post(`${this.baseUrl}/login`, body)
       .then((res) => res.data)
   }
 }

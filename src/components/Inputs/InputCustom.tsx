@@ -10,29 +10,14 @@ interface PropsInputCustom {
   hdChange?: (name: string, value: string) => void
 }
 
-const InputCustom = ({
-  disabled,
-  className,
-  placeholder,
-  name,
-  suffix,
-  hdChange,
-}: PropsInputCustom) => {
+const InputCustom: React.FC<PropsInputCustom> = ({ disabled, className, placeholder, name, suffix = '$', hdChange }) => {
   // const suffixType = suffix ? <Icon type={suffix} /> : <span />
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    hdChange && hdChange(name, value) 
+    hdChange && hdChange(name, value)
   }
 
-  return (
-    <Input
-      disabled={disabled}
-      className={className}
-      placeholder={placeholder}
-      name={name}
-      onChange={handleChange}
-    />
-  )
+  return <Input disabled={disabled} className={className} placeholder={placeholder} name={name} onChange={handleChange} />
 }
 
 export default InputCustom

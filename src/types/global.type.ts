@@ -19,4 +19,5 @@ export type UserInfo = {
   email: string
   password: string
   role?: number | number[]
+  token?: string
 }
