@@ -1,11 +1,3 @@
-export const test = (key: string) => {
-  switch (key) {
-    case '1':
-      return 'test ne hi hi'
-    default:
-      return 'abc'
-  }
-}
 
 export function setCookie(name: string, value: any, days?: any): any {
   var expires = ''

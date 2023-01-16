@@ -1,9 +1,15 @@
 import React, { useState } from 'react'
-import { AppstoreOutlined, CalendarOutlined, SettingOutlined, HomeOutlined } from '@ant-design/icons'
+import {
+  AppstoreOutlined,
+  CalendarOutlined,
+  SettingOutlined,
+  HomeOutlined,
+} from '@ant-design/icons'
 import { Menu } from 'antd'
 import type { MenuProps, MenuTheme } from 'antd/es/menu'
 import { css } from '@emotion/react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import { v4 as uuid } from 'uuid'
 
 // Components
 import Logo from '../assets/imgs/logo-udemy.svg'
@@ -13,10 +19,14 @@ type MenuItem = Required<MenuProps>['items'][number]
 const SideBar: any = ({ role }: any) => {
   const [mode, setMode] = useState<'vertical' | 'inline'>('inline')
   const [theme, setTheme] = useState<MenuTheme>('light')
-  const location = useLocation()
-  console.log(location)
 
-  const getItem = (label: React.ReactNode, key?: React.Key | null, icon?: React.ReactNode, children?: MenuItem[]): MenuItem => {
+  const getItem = (
+    label: React.ReactNode,
+    key?: React.Key | null,
+    icon?: React.ReactNode,
+    children?: MenuItem[]
+  ): MenuItem => {
+    // if()
     return {
       key,
       icon,
@@ -27,23 +37,22 @@ const SideBar: any = ({ role }: any) => {
 
   const items: MenuItem[] = [
     getItem(
-      <Link style={{ color: 'red' }} to={ROUTER_ENUM.BASE_URL}>
-        Home
-      </Link>,
-      '1',
+      <Link to={ROUTER_ENUM.DASHBOARD}>DashBoard</Link>,
+      uuid(),
       <HomeOutlined />
     ),
-    getItem('Navigation Two', '2', <CalendarOutlined />),
-    getItem('Navigation Two', 'sub1', <AppstoreOutlined />, [
-      getItem('Option 3', '3'),
-      getItem('Option 4', '4'),
-      getItem('Submenu', 'sub1-2', null, [getItem('Option 5', '5'), getItem('Option 6', '6')]),
-    ]),
-    getItem('Navigation Three', 'sub2', <SettingOutlined />, [
-      getItem('Option 7', '7'),
-      getItem('Option 8', '8'),
-      getItem('Option 9', '9'),
-      getItem('Option 10', '10'),
+    getItem(
+      <Link to={ROUTER_ENUM.DEFAULT}>Home</Link>,
+      uuid(),
+      <CalendarOutlined />
+    ),
+    getItem('Users', uuid(), <AppstoreOutlined />, [
+      getItem('Setting', uuid()),
+      getItem(<Link to={ROUTER_ENUM.PROFILE}>Profile</Link>, uuid()),
+      // getItem('Submenu', 'sub1-2', null, [
+      //   getItem('Option 5', '5'),
+      //   getItem('Option 6', '6'),
+      // ]),
     ]),
   ]
 
@@ -72,12 +81,19 @@ const SideBar: any = ({ role }: any) => {
       <Switch onChange={changeTheme} /> Change Style
       <br />
       <br /> */}
-      <div css={header_side_bar} className="logo h-20">
+      <div css={header_side_bar} className='logo h-20'>
         <Link to={ROUTER_ENUM.BASE_URL}>
-          <img css={header_img} src={Logo} alt="img" />
+          <img css={header_img} src={Logo} alt='img' />
         </Link>
       </div>
-      <Menu style={{ width: 240, height: '80%' }} defaultSelectedKeys={['1']} defaultOpenKeys={['']} mode={mode} theme={theme} items={items} />
+      <Menu
+        style={{ width: 240, height: '80%' }}
+        defaultSelectedKeys={['1']}
+        defaultOpenKeys={['']}
+        mode={mode}
+        theme={theme}
+        items={items}
+      />
     </>
   )
 }

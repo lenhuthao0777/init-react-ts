@@ -2,9 +2,10 @@ import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { AXIOS_CONFIG } from '../enums/global.enum'
 import { showLoader, hiddenLoader } from '../features/Loading'
 
+
 const apiService = (dispatch?: any) => {
   const axiosClient = axios.create({
-    baseURL: 'https://6155898393e3550017b08a76.mockapi.io',
+    baseURL: 'http://localhost:3000',
     headers: { 'X-Custom-Header': 'foobar' },
   })
 
@@ -33,10 +34,10 @@ const apiService = (dispatch?: any) => {
       dispatch && dispatch(hiddenLoader(false))
 
       if (error.status === 401) {
-        // xu ly logout: clear cookies, day nguoi dung ve trang login
+        // handle logout: clear cookies, move to login page
       }
       if (error.status === 500) {
-        // xu ly thong bao cho nguoi dung server bi loi
+        // handle notification for user server error
       }
       return Promise.reject(error)
     }

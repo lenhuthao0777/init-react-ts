@@ -14,3 +14,9 @@ export type children = {
   loader: () => void
   errorElement: () => jsx.JSX.Element
 }
+
+export type UserInfo = {
+  email: string
+  password: string
+  role?: number | number[]
+}
