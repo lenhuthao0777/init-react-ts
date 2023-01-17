@@ -2,10 +2,18 @@ import { Avatar, Popover } from 'antd'
 import React from 'react'
 import { UserOutlined } from '@ant-design/icons'
 import { eraseCookie } from '../hooks'
-import { useNavigate } from 'react-router-dom'
-
+import { useLocation, useNavigate } from 'react-router-dom'
+import styled from '@emotion/styled'
+import logo from '../assets/imgs/logo-udemy.svg'
+import { COMMON } from '@src/constants'
+import { includes } from 'lodash'
 function Nav() {
+  const location = useLocation()
+
   const navigate = useNavigate()
+
+  const isNews = includes(location.pathname, 'news')
+
   const Logout = () => {
     eraseCookie('userInfo')
 
@@ -14,19 +22,50 @@ function Nav() {
 
   const content = (
     <div>
-      <p className='cursor-pointer' onClick={Logout}>
+      <p className="cursor-pointer" onClick={Logout}>
         Logout
       </p>
       <p>Profile</p>
     </div>
   )
 
+  const Logo = styled.span`
+    width: 120px;
+  `
+
+  const SectionContainer = styled.section`
+    width: 100%
+    height: 80px;
+    background: ${COMMON.bg_nav};
+    cursor: pointer;
+    ${
+      isNews
+        ? ` display: flex;
+            align-items: center;
+            justify-content: space-between;`
+        : `
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;;
+        `
+    }
+  `
+
+  const handleBackToHome = () => {
+    navigate('/')
+  }
+
   return (
-    <section className='header-nav w-full h-20 bg-blue-400 flex items-center justify-end p-2'>
-      <Popover placement='topRight' content={content} title='Johnny'>
-        <Avatar className='cursor-pointer' icon={<UserOutlined />} />
+    <SectionContainer className="header-nav h-20 p-2">
+      {isNews ? (
+        <Logo onClick={handleBackToHome}>
+          <img src={logo} alt="img" />
+        </Logo>
+      ) : null}
+      <Popover placement="topRight" content={content} title="Johnny">
+        <Avatar className="cursor-pointer" icon={<UserOutlined />} />
       </Popover>
-    </section>
+    </SectionContainer>
   )
 }
 

@@ -2,14 +2,13 @@ import { PropsWithChildren, ReactNode, useEffect } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import Loading from '../components/Loading'
 import SideBar from '../components/SideBar'
-import { getCookie, setCookie } from '../hooks'
+import { getCookie } from '../hooks'
 import Nav from '../components/Nav'
 import { UserInfo } from '../types/global.type'
 import { isEmpty } from 'lodash'
-import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Toast from '@components/Toast'
-
+import { css } from '@emotion/react'
 const roles: number[] = [1, 2, 4, 5]
 
 interface authProps {
@@ -47,22 +46,27 @@ const Admin = ({ children }: PropsWithChildren) => {
   return (
     <div className="h-vh">
       <div className="flex">
-        <section className="nav w-60 h-screen" style={{ backgroundColor: '#ffffff' }}>
+        <section className="nav w-60 h-screen bg-white">
           <SideBar role={auth} />
         </section>
 
-        <section className="w-screen flex-1">
+        <section className="w-screen  flex-1">
           <Nav />
 
-          <div className="content pt-4 pl-4 pr-4 relative">
+          <section
+            css={css`
+              height: calc(100vh - 80px);
+            `}
+            className="content relative pt-4 pl-4 pr-4 "
+          >
             <div className="overflow-auto h-full">
               {children}
 
               <Outlet />
-              <Loading />
               <Toast />
+              <Loading />
             </div>
-          </div>
+          </section>
         </section>
       </div>
     </div>

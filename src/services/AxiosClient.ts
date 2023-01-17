@@ -2,7 +2,7 @@ import { getCookie } from '@src/hooks'
 import { UserInfo } from '@src/types/global.type'
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { AXIOS_CONFIG } from '../enums/global.enum'
-import { showLoader, hiddenLoader } from '../features/Loading'
+import { showLoader } from '../features/Loading'
 
 const apiService = (dispatch?: any) => {
   const axiosClient = axios.create({
@@ -23,7 +23,7 @@ const apiService = (dispatch?: any) => {
       return request
     },
     (err) => {
-      dispatch && dispatch(hiddenLoader(false))
+      dispatch && dispatch(showLoader(false))
 
       return { status: err.request.status, request: err.request.data.errors }
     }
@@ -31,12 +31,12 @@ const apiService = (dispatch?: any) => {
 
   axiosClient.interceptors.response.use(
     (response: AxiosResponse) => {
-      dispatch && dispatch(hiddenLoader(false))
+      dispatch && dispatch(showLoader(false))
 
       return response
     },
     (error) => {
-      dispatch && dispatch(hiddenLoader(false))
+      dispatch && dispatch(showLoader(false))
 
       if (error.status === 401) {
         // handle logout: clear cookies, move to login page
