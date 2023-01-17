@@ -6,6 +6,9 @@ import { getCookie, setCookie } from '../hooks'
 import Nav from '../components/Nav'
 import { UserInfo } from '../types/global.type'
 import { isEmpty } from 'lodash'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import Toast from '@components/Toast'
 
 const roles: number[] = [1, 2, 4, 5]
 
@@ -28,7 +31,7 @@ const useAuth = () => {
   return user
 }
 
-const Default = ({ children }: PropsWithChildren) => {
+const Admin = ({ children }: PropsWithChildren) => {
   const auth: CheckUser = useAuth()
 
   const navigate = useNavigate()
@@ -42,27 +45,28 @@ const Default = ({ children }: PropsWithChildren) => {
   }, [])
 
   return (
-    <div className="h-vh" style={{ backgroundColor: '#f1f2f6' }}>
+    <div className="h-vh">
       <div className="flex">
         <section className="nav w-60 h-screen" style={{ backgroundColor: '#ffffff' }}>
           <SideBar role={auth} />
         </section>
 
-        <div className="w-screen flex-1">
+        <section className="w-screen flex-1">
           <Nav />
 
-          <div className="content pt-4 pl-4 pr-4 relative h-80">
+          <div className="content pt-4 pl-4 pr-4 relative">
             <div className="overflow-auto h-full">
               {children}
 
               <Outlet />
               <Loading />
+              <Toast />
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   )
 }
 
-export default Default
+export default Admin

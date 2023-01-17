@@ -1,4 +1,5 @@
 import Auth from '@src/apis/Auth.api'
+import { hiddenLoader, showLoader } from '@src/features/Loading'
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../app/hook'
 
@@ -9,7 +10,6 @@ function List() {
 
   const getList = async () => {
     const { data } = await Auth.list()
-    console.log(data)
   }
 
   return (

@@ -2,7 +2,7 @@ import { Fragment, Suspense, lazy } from 'react'
 import { createBrowserRouter, createRoutesFromElements, Route, Routes } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 // Components
-const Default = lazy(() => import('@layouts/Default'))
+const Admin = lazy(() => import('@layouts/Admin'))
 const Home = lazy(() => import('@pages/Home'))
 const Login = lazy(() => import('@pages/Login'))
 const Profile = lazy(() => import('@pages/Profile'))
@@ -10,13 +10,15 @@ const PageNotFound = lazy(() => import('@pages/PageNotFound'))
 
 // import Home from '@pages/Home'
 // import Login from '@pages/Login'
-// import Default from '../layouts/Default'
+// import Admin from '../layouts/Admin'
 // import PageNotFound from '@pages/PageNotFound/PageNotFound'
 // import Profile from '@pages/Profile'
 
 // ENUM
 import { ROUTER_ENUM } from './Router.enum'
 import DashBoard from '@pages/Dashboard'
+import Client from '@layouts/Client'
+import News from '@pages/News'
 
 type router = {
   path: string
@@ -37,7 +39,7 @@ const routers = [
   {
     id: uuid(),
     path: '/',
-    element: <Default />,
+    element: <Admin />,
     routes: [
       {
         id: uuid(),
@@ -58,7 +60,7 @@ const routers = [
       {
         id: uuid(),
         path: ROUTER_ENUM.PROFILE,
-        element: <Default />,
+        element: <Admin />,
         loader: () => {},
         errorElement: <PageNotFound />,
         children: [
@@ -76,7 +78,7 @@ const routers = [
         id: uuid(),
         path: ROUTER_ENUM.DASHBOARD,
         loader: () => {},
-        element: <Default />,
+        element: <Admin />,
         errorElement: <PageNotFound />,
         children: [
           {
@@ -85,6 +87,29 @@ const routers = [
             element: <DashBoard />,
             loader: () => {},
             index: false,
+            errorElement: <PageNotFound />,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: uuid(),
+    path: '/',
+    element: <Client />,
+    routes: [
+      {
+        id: uuid(),
+        path: ROUTER_ENUM.NEWS,
+        loader: () => {},
+        errorElement: <PageNotFound />,
+        children: [
+          {
+            id: uuid(),
+            path: ROUTER_ENUM.DEFAULT,
+            element: <News />,
+            loader: () => {},
+            index: true,
             errorElement: <PageNotFound />,
           },
         ],

@@ -2,10 +2,8 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { redirect, useNavigate } from 'react-router-dom'
 import { getCookie, setCookie } from '../../hooks'
 import QueryString from 'qs'
-import { UserInfo } from '../../types/global.type'
-import { useAppDispatch, useAppSelector } from '../../app/hook'
+import { useAppDispatch } from '../../app/hook'
 import Auth from '../../apis/Auth.api'
-import InputCustom from '@components/Inputs/InputCustom'
 
 type UserLogin = {
   email: string
@@ -33,7 +31,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const res: any = await Auth.login(() => dispatch, userInfo)
+      const res: any = await Auth.login(userInfo)
 
       await setCookie(
         'userInfo',

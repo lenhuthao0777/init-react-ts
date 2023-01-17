@@ -5,5 +5,6 @@ export enum ROUTER_ENUM {
   LOGIN = 'login',
   PROFILE = 'profile',
   DASHBOARD = 'dash-board',
+  NEWS = 'news',
   NOT_FOUND = '*'
 }

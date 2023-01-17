@@ -4,8 +4,8 @@ import CommonApi from '.'
 class Auth extends CommonApi {
   static baseUrl = 'user'
 
-  static login(dispatch?: () => void, body?: any): Promise<any> {
-    return apiService(dispatch)
+  static login(body?: any): Promise<any> {
+    return apiService()
       .post(`${this.baseUrl}/login`, body)
       .then((res) => res.data)
   }

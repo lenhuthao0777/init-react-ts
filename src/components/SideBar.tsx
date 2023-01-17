@@ -18,6 +18,7 @@ type MenuItem = Required<MenuProps>['items'][number]
 
 const SideBar: any = ({ role }: any) => {
   const [mode, setMode] = useState<'vertical' | 'inline'>('inline')
+  
   const [theme, setTheme] = useState<MenuTheme>('light')
 
   const getItem = (
@@ -43,6 +44,11 @@ const SideBar: any = ({ role }: any) => {
     ),
     getItem(
       <Link to={ROUTER_ENUM.DEFAULT}>Home</Link>,
+      uuid(),
+      <CalendarOutlined />
+    ),
+    getItem(
+      <Link to={ROUTER_ENUM.NEWS}>News</Link>,
       uuid(),
       <CalendarOutlined />
     ),
