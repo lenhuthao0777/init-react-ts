@@ -7,7 +7,6 @@ import Nav from '../components/Nav'
 import { UserInfo } from '../types/global.type'
 import { isEmpty } from 'lodash'
 import 'react-toastify/dist/ReactToastify.css'
-import Toast from '@components/Toast'
 import { css } from '@emotion/react'
 const roles: number[] = [1, 2, 4, 5]
 
@@ -63,7 +62,6 @@ const Admin = ({ children }: PropsWithChildren) => {
               {children}
 
               <Outlet />
-              <Toast />
               <Loading />
             </div>
           </section>

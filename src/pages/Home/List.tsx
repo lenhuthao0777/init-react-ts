@@ -32,11 +32,9 @@ function List() {
     return data
   }, [data])
 
-  console.log(dataTable)
-
   return (
     <>
-      <TableBase />
+      <TableBase data={dataTable} />
     </>
   )
 }

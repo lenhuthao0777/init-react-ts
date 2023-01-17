@@ -1,6 +1,12 @@
 import React from 'react'
 
-function TableBase() {
+interface TableBaseProps {
+  data: any
+}
+
+const TableBase: React.FC<TableBaseProps> = ({ data }) => {
+  console.log(data)
+
   return (
     <table>
       <thead>
