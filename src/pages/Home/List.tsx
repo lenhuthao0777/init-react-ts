@@ -1,7 +1,8 @@
+import TableBase from '@components/TableBase'
 import Auth from '@src/apis/Auth.api'
 import { showLoader } from '@src/features/Loading'
 import { showToast } from '@src/hooks'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../app/hook'
 
 function List() {
@@ -27,10 +28,16 @@ function List() {
     }
   }
 
+  const dataTable = useMemo(() => {
+    return data
+  }, [data])
+
+  console.log(dataTable)
+
   return (
-    <div>
-      <button>List</button>
-    </div>
+    <>
+      <TableBase />
+    </>
   )
 }
 

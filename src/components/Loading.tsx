@@ -4,9 +4,6 @@ import { useAppSelector } from '../app/hook'
 function Loading() {
   const isLoading = useAppSelector((state) => state.loading.isLoading)
 
-  console.log(isLoading);
-  
-
   return isLoading ? (
     <div className="absolute w-full h-full top-0 right-0">
       <div

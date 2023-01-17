@@ -39,7 +39,7 @@ const Admin = ({ children }: PropsWithChildren) => {
     if (!auth.info) {
       return navigate('/login')
     } else if (!auth.loggedIn) {
-      return navigate('/')
+      return navigate('/news')
     }
   }, [])
 
