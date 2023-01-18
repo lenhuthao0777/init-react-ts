@@ -1,5 +1,6 @@
 import TableBase from '@components/TableBase'
 import Auth from '@src/apis/Auth.api'
+import User from '@src/apis/User.api'
 import { showLoader } from '@src/features/Loading'
 import { showToast } from '@src/hooks'
 import { useEffect, useMemo, useState } from 'react'
@@ -17,7 +18,7 @@ function List() {
   const getList = async () => {
     dispatch(showLoader(true))
     try {
-      const { data } = await Auth.list()
+      const { data } = await User.list()
 
       setData(data)
     } catch (error) {
@@ -34,7 +35,7 @@ function List() {
 
   return (
     <>
-      <TableBase data={dataTable} />
+      <TableBase data={data} />
     </>
   )
 }

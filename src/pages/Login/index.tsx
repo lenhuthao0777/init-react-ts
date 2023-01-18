@@ -1,9 +1,11 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { redirect, useNavigate } from 'react-router-dom'
-import { getCookie, setCookie } from '../../hooks'
+import { getCookie, setCookie, showToast } from '../../hooks'
 import QueryString from 'qs'
 import { useAppDispatch } from '../../app/hook'
 import Auth from '../../apis/Auth.api'
+import { ROUTER_ENUM } from '@src/routers/Router.enum'
+import { AxiosError } from 'axios'
 
 type UserLogin = {
   email: string
@@ -39,10 +41,18 @@ const Login = () => {
           ...res.data,
         })
       )
+      await showToast('success', res.message)
 
-      await navigate('/')
-    } catch (error) {
-      return error
+      if (res.code === 201) {
+        navigate(ROUTER_ENUM.NEWS)
+      }
+    } catch (error: AxiosError | any) {
+      const {
+        response: {
+          data: { message },
+        },
+      } = error
+      showToast('error', message)
     }
   }
 

@@ -2,6 +2,7 @@ import { Fragment, Suspense } from 'react'
 import router from './routers'
 import { RouterProvider } from 'react-router-dom'
 import Toast from '@components/Toast'
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   return (

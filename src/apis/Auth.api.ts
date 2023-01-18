@@ -2,7 +2,7 @@ import apiService from '@src/services/AxiosClient'
 import CommonApi from '.'
 
 class Auth extends CommonApi {
-  static baseUrl = 'user'
+  static baseUrl = 'auth'
 
   static login(body?: any): Promise<any> {
     return apiService()

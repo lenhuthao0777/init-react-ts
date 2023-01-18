@@ -9,7 +9,7 @@ const PageNotFound = () => {
   const locations = useLocation()
 
   const handleBack = () => {
-    navigate('/')
+    navigate('/news')
   }
 
   return (

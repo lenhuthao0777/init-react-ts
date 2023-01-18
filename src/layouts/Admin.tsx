@@ -6,8 +6,8 @@ import { getCookie } from '../hooks'
 import Nav from '../components/Nav'
 import { UserInfo } from '../types/global.type'
 import { isEmpty } from 'lodash'
-import 'react-toastify/dist/ReactToastify.css'
 import { css } from '@emotion/react'
+import { ROUTER_ENUM } from '@src/routers/Router.enum'
 const roles: number[] = [1, 2, 4, 5]
 
 interface authProps {
@@ -36,9 +36,9 @@ const Admin = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     if (!auth.info) {
-      return navigate('/login')
+      return navigate(ROUTER_ENUM.LOGIN)
     } else if (!auth.loggedIn) {
-      return navigate('/news')
+      return navigate(ROUTER_ENUM.NOT_FOUND)
     }
   }, [])
 
