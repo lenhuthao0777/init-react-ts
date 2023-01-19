@@ -1,5 +1,4 @@
 import TableBase from '@components/TableBase'
-import Auth from '@src/apis/Auth.api'
 import User from '@src/apis/User.api'
 import { showLoader } from '@src/features/Loading'
 import { showToast } from '@src/hooks'
