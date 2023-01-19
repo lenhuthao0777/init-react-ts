@@ -3,12 +3,12 @@ import Auth from '@src/apis/Auth.api'
 import User from '@src/apis/User.api'
 import { showLoader } from '@src/features/Loading'
 import { showToast } from '@src/hooks'
-import { useEffect, useMemo, useState } from 'react'
+import { TableBaseHeaderType } from '@src/types/global.type'
+import { useEffect, useMemo, useState, useTransition } from 'react'
 import { useAppDispatch, useAppSelector } from '../../app/hook'
 
 function List() {
-  const [data, setData] = useState<any>()
-
+  const [dataTable, setDataTable] = useState<[]>()
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function List() {
     try {
       const { data } = await User.list()
 
-      setData(data)
+      setDataTable(data)
     } catch (error) {
       showToast('error', 'Get data failure!')
     } finally {
@@ -29,13 +29,20 @@ function List() {
     }
   }
 
-  const dataTable = useMemo(() => {
-    return data
-  }, [data])
+  const header: TableBaseHeaderType[] | undefined = useMemo(() => {
+    return dataTable?.map(() => ({
+      title: 'abc',
+      rowSpan: null,
+      colSPan: null,
+      width: null,
+      height: null,
+      border: null,
+    }))
+  }, [dataTable])
 
   return (
     <>
-      <TableBase data={data} />
+      <TableBase header={header} dataSource={[]} />
     </>
   )
 }

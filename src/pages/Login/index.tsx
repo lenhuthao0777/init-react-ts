@@ -22,6 +22,7 @@ const useAuth = () => {
 
 const Login = () => {
   const dispatch = useAppDispatch()
+
   const [userInfo, setUserInfo] = useState<UserLogin>({
     email: '',
     password: '',
@@ -43,7 +44,7 @@ const Login = () => {
       )
       await showToast('success', res.message)
 
-      if (res.code === 201) {
+      if (res.code === 200) {
         navigate(ROUTER_ENUM.NEWS)
       }
     } catch (error: AxiosError | any) {

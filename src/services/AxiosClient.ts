@@ -38,10 +38,12 @@ const apiService = (dispatch?: any) => {
     (error) => {
       dispatch && dispatch(showLoader(false))
 
-      if (error.status === 401) {
+      console.log(error.response.status)
+
+      if (error.response.status === 401) {
         // handle logout: clear cookies, move to login page
       }
-      if (error.status === 500) {
+      if (error.response.status === 500) {
         // handle notification for user server error
       }
       return Promise.reject(error)

@@ -9,6 +9,7 @@ import { css } from '@emotion/react'
 const Client: React.FC<PropsWithChildren> = () => {
   const ClientContainerBlock = styled.div`
     max-width: 1200px;
+    padding: 15px;
     margin: 0 auto;
   `
 
@@ -22,7 +23,7 @@ const Client: React.FC<PropsWithChildren> = () => {
 
       <div css={bodyBlock} className="flex relative ">
         <div className="w-screen flex-1">
-          <div className="content pt-4 pl-4 pr-4 ">
+          <div className="content">
             <div className="overflow-auto h-full">
               <ClientContainerBlock>
                 <Outlet />

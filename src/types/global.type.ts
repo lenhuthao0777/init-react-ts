@@ -21,3 +21,14 @@ export type UserInfo = {
   role?: number | number[]
   token?: string
 }
+
+export type TableBaseHeaderType = {
+  title: string
+  rowSpan: number | string | null
+  colSPan: number | string | null
+  width: string | null
+  height: string | null
+  border: string | null
+}
+
+export type TableBaseBodyType = {}
