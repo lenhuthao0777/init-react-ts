@@ -7,10 +7,13 @@ import styled from '@emotion/styled'
 import logo from '../assets/imgs/logo-udemy.svg'
 import { COMMON } from '@src/constants'
 import { includes } from 'lodash'
+import { useTranslation } from 'react-i18next'
 function Nav() {
   const location = useLocation()
 
   const navigate = useNavigate()
+
+  const { t } = useTranslation()
 
   const isNews = includes(location.pathname, 'news')
 
@@ -22,10 +25,10 @@ function Nav() {
 
   const content = (
     <div>
-      <p className="cursor-pointer" onClick={Logout}>
-        Logout
+      <p className='cursor-pointer' onClick={Logout}>
+        {t('logout')}
       </p>
-      <p>Profile</p>
+      <p>{t('profile')}</p>
     </div>
   )
 
@@ -56,14 +59,14 @@ function Nav() {
   }
 
   return (
-    <SectionContainer className="header-nav h-20 p-2">
+    <SectionContainer className='header-nav h-20 p-2'>
       {isNews ? (
         <Logo onClick={handleBackToHome}>
-          <img src={logo} alt="img" />
+          <img src={logo} alt='img' />
         </Logo>
       ) : null}
-      <Popover placement="topRight" content={content} title="Johnny">
-        <Avatar className="cursor-pointer" icon={<UserOutlined />} />
+      <Popover placement='topRight' content={content} title='Johnny'>
+        <Avatar className='cursor-pointer' icon={<UserOutlined />} />
       </Popover>
     </SectionContainer>
   )

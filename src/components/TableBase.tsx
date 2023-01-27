@@ -4,11 +4,13 @@ import { useTranslation } from 'react-i18next'
 
 interface TableBaseProps {
   header: TableBaseHeaderType[] | undefined
-  dataSource: TableBaseBodyType[]
+  dataSource: []
 }
 
 const TableBase: React.FC<TableBaseProps> = ({ header, dataSource }) => {
   const { t } = useTranslation()
+  console.log(dataSource);
+  
 
   return (
     <table>
@@ -20,9 +22,11 @@ const TableBase: React.FC<TableBaseProps> = ({ header, dataSource }) => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>{t('category')}</td>
-        </tr>
+        {/* {dataSource.map((item, index) => (
+          <tr key={item.id}>
+            <td>{item[`${`${[header[index].title]}`}`]}</td>
+          </tr>
+        ))} */}
       </tbody>
     </table>
   )

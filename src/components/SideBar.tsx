@@ -4,6 +4,7 @@ import {
   CalendarOutlined,
   SettingOutlined,
   HomeOutlined,
+  BarChartOutlined
 } from '@ant-design/icons'
 import { Menu } from 'antd'
 import type { MenuProps, MenuTheme } from 'antd/es/menu'
@@ -14,12 +15,15 @@ import { v4 as uuid } from 'uuid'
 // Components
 import Logo from '../assets/imgs/logo-udemy.svg'
 import { ROUTER_ENUM } from '../routers/Router.enum'
+import { useTranslation } from 'react-i18next'
 type MenuItem = Required<MenuProps>['items'][number]
 
 const SideBar: any = ({ role }: any) => {
   const [mode, setMode] = useState<'vertical' | 'inline'>('inline')
-  
+
   const [theme, setTheme] = useState<MenuTheme>('light')
+
+  const { t } = useTranslation()
 
   const getItem = (
     label: React.ReactNode,
@@ -38,23 +42,23 @@ const SideBar: any = ({ role }: any) => {
 
   const items: MenuItem[] = [
     getItem(
-      <Link to={ROUTER_ENUM.DASHBOARD}>DashBoard</Link>,
+      <Link to={ROUTER_ENUM.DASHBOARD}>{t('dashboard')}</Link>,
       uuid(),
       <HomeOutlined />
     ),
     getItem(
-      <Link to={ROUTER_ENUM.DEFAULT}>Home</Link>,
+      <Link to={ROUTER_ENUM.DEFAULT}>{t('home')}</Link>,
       uuid(),
       <CalendarOutlined />
     ),
     getItem(
-      <Link to={ROUTER_ENUM.NEWS}>News</Link>,
+      <Link to={ROUTER_ENUM.NEWS}>{t('news')}</Link>,
       uuid(),
-      <CalendarOutlined />
+      <BarChartOutlined />
     ),
-    getItem('Users', uuid(), <AppstoreOutlined />, [
-      getItem('Setting', uuid()),
-      getItem(<Link to={ROUTER_ENUM.PROFILE}>Profile</Link>, uuid()),
+    getItem(t('user'), uuid(), <AppstoreOutlined />, [
+      getItem(t('setting'), uuid()),
+      getItem(<Link to={ROUTER_ENUM.PROFILE}>{t('profile')}</Link>, uuid()),
       // getItem('Submenu', 'sub1-2', null, [
       //   getItem('Option 5', '5'),
       //   getItem('Option 6', '6'),
