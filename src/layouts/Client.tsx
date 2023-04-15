@@ -18,13 +18,13 @@ const Client: React.FC<PropsWithChildren> = () => {
   `)
 
   return (
-    <section className="h-vh" style={{ backgroundColor: '#f1f2f6' }}>
+    <section className='h-vh' style={{ backgroundColor: '#f1f2f6' }}>
       <Nav />
 
-      <div css={bodyBlock} className="flex relative ">
-        <div className="w-screen flex-1">
-          <div className="content">
-            <div className="overflow-auto h-full">
+      <div css={bodyBlock} className='flex relative '>
+        <div className='w-screen flex-1'>
+          <div className='content'>
+            <div className='overflow-auto h-full'>
               <ClientContainerBlock>
                 <Outlet />
               </ClientContainerBlock>

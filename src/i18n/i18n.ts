@@ -4,7 +4,19 @@ import { initReactI18next } from 'react-i18next'
 const resources = {
   en: {
     translation: {
-      category: 'Next category',
+      category: 'Category',
+      dashboard: 'DashBoard',
+      home: 'Home',
+      news: 'New',
+      profile: 'Profile',
+      user: 'User',
+      setting: 'Setting',
+      id: 'NO',
+      name: 'Name',
+      email: 'Email',
+      create_at: 'Create At',
+      update_at: 'Update At',
+      logout: 'Logout'
     },
   },
 
@@ -31,8 +43,8 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: 'jp',
-  fallbackLng: 'jp',
+  lng: 'en',
+  fallbackLng: 'en',
   interpolation: {
     escapeValue: false, // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
   },

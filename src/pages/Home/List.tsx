@@ -88,7 +88,7 @@ function List() {
 
   return (
     <>
-      <TableBase header={header} dataSource={dataSource} />
+      {/* <TableBase header={header} dataSource={dataSource} /> */}
     </>
   )
 }
