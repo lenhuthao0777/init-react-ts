@@ -1,13 +1,26 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { redirect, useNavigate } from 'react-router-dom'
-import { getCookie, setCookie, showToast } from '../../hooks'
 import QueryString from 'qs'
-import { useAppDispatch } from '../../app/hook'
-import Auth from '../../apis/Auth.api'
-import { ROUTER_ENUM } from '@src/routers/Router.enum'
-import { AxiosError } from 'axios'
 import styled from 'styled-components'
-type UserLogin = {
+import { AxiosError } from 'axios'
+
+import { getCookie, setCookie, showToast } from '../../hooks'
+import { ROUTER_ENUM } from '@src/routers/Router.enum'
+import Auth from '@src/apis/Auth.api'
+import { useAppDispatch } from '@app/*'
+
+// Style
+const Container = styled.div`
+  width: 500px;
+  height: 400px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin: 100px auto;
+  overflow: hidden;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
+`
+
+type TUserLogin = {
   email: string
   password: string
 }
@@ -20,20 +33,11 @@ const useAuth = () => {
   return checkUserInfo
 }
 
-const Container = styled.div`
-  width: 500px;
-  height: 400px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  margin: 100px auto;
-  overflow: hidden;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
-`
-
+// Component
 const Login = () => {
   const dispatch = useAppDispatch()
 
-  const [userInfo, setUserInfo] = useState<UserLogin>({
+  const [userInfo, setUserInfo] = useState<TUserLogin>({
     email: '',
     password: '',
   })
@@ -81,14 +85,15 @@ const Login = () => {
       const { redirectTo } = QueryString.parse(location.search, {
         ignoreQueryPrefix: true,
       })
+
       if (redirectTo) {
         redirect(redirectTo as string)
       }
+
       return navigate('/')
     }
   }, [auth])
 
-  // const hdChange = (name: string, value: string) => {}
 
   return (
     <Container>
