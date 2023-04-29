@@ -7,7 +7,7 @@ import { AxiosError } from 'axios'
 import { getCookie, setCookie, showToast } from '../../hooks'
 import { ROUTER_ENUM } from '@src/routers/Router.enum'
 import Auth from '@src/apis/Auth.api'
-import { useAppDispatch } from '@app/*'
+import { useAppDispatch } from '@app/hook'
 
 // Style
 const Container = styled.div`

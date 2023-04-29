@@ -1,44 +1,15 @@
 import i18n, { ResourceLanguage } from 'i18next'
 import { initReactI18next } from 'react-i18next'
+import en from './en'
+import vi from './vi'
+import jp from './jp'
 
 const resources = {
-  en: {
-    translation: {
-      category: 'Category',
-      dashboard: 'DashBoard',
-      home: 'Home',
-      news: 'New',
-      profile: 'Profile',
-      user: 'User',
-      setting: 'Setting',
-      id: 'NO',
-      name: 'Name',
-      email: 'Email',
-      create_at: 'Create At',
-      update_at: 'Update At',
-      logout: 'Logout'
-    },
-  },
+  en,
 
-  vi: {},
+  vi,
 
-  jp: {
-    translation: {
-      category: 'カテゴリー',
-      dashboard: 'ダッシュボード',
-      home: 'ホームページ',
-      news: 'ニュース',
-      profile: 'プロフィール',
-      user: 'ユーザー',
-      setting: '設定',
-      id: '番号',
-      name: '名前',
-      email: 'Eメール',
-      create_at: 'で作成',
-      update_at: 'で更新',
-      logout: 'ログアウト'
-    },
-  },
+  jp,
 }
 
 i18n.use(initReactI18next).init({

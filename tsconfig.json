@@ -21,7 +21,7 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@pages/*": ["src/pages/*"],
-      "@app/*": ["src/app/hook.ts"],
+      "@app/*": ["src/app/*"],
       "@layouts/*": ["src/layouts/*"],
       "@src/*": ["src/*"]
 
