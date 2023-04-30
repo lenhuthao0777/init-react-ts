@@ -19,14 +19,14 @@ const Container = styled.div`
   overflow: hidden;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
 `
-
+// Type
 type TUserLogin = {
   email: string
   password: string
 }
 
 const useAuth = () => {
-  const user: any = getCookie('userInfo')
+  const user: string = getCookie('userInfo')
 
   const checkUserInfo = user && JSON.parse(user)
 
@@ -56,6 +56,7 @@ const Login = () => {
           ...res.data,
         })
       )
+
       await showToast('success', res.message)
 
       if (res.code === 200) {
@@ -67,6 +68,7 @@ const Login = () => {
           data: { message },
         },
       } = error
+
       showToast('error', message)
     }
   }
@@ -93,7 +95,6 @@ const Login = () => {
       return navigate('/')
     }
   }, [auth])
-
 
   return (
     <Container>
