@@ -24,41 +24,44 @@ const useAuth = () => {
 
   const partUserInfo: UserInfo = userInfo ? JSON.parse(userInfo as any) : {}
 
-  const user: any = { loggedIn: roles.includes(Number(partUserInfo.role)), info: isEmpty(partUserInfo) ? false : true }
+  const user: any = {
+    loggedIn: roles.includes(Number(partUserInfo.role)),
+    info: isEmpty(partUserInfo) ? false : true,
+  }
 
   return user
 }
 
 const Admin = ({ children }: PropsWithChildren) => {
-  const auth: CheckUser = useAuth()
+  // const auth: CheckUser = useAuth()
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
-  useEffect(() => {
-    if (!auth.info) {
-      return navigate(ROUTER_ENUM.LOGIN)
-    } else if (!auth.loggedIn) {
-      return navigate(ROUTER_ENUM.NOT_FOUND)
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (!auth.info) {
+  //     return navigate(ROUTER_ENUM.LOGIN)
+  //   } else if (!auth.loggedIn) {
+  //     return navigate(ROUTER_ENUM.NOT_FOUND)
+  //   }
+  // }, [])
 
   return (
-    <div className="h-vh">
-      <div className="flex">
-        <section className="nav w-60 h-screen bg-white">
-          <SideBar role={auth} />
+    <div className='h-vh'>
+      <div className='flex'>
+        <section className='nav w-60 h-screen bg-white'>
+          <SideBar />
         </section>
 
-        <section className="w-screen  flex-1">
+        <section className='w-screen  flex-1'>
           <Nav />
 
           <section
             css={css`
               height: calc(100vh - 80px);
             `}
-            className="content relative pt-4 pl-4 pr-4 "
+            className='content relative pt-4 pl-4 pr-4 '
           >
-            <div className="overflow-auto h-full">
+            <div className='overflow-auto h-full'>
               {children}
 
               <Outlet />
