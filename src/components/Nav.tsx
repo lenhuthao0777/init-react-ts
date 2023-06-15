@@ -1,13 +1,13 @@
 import { Avatar, Popover } from 'antd'
 import React from 'react'
 import { UserOutlined } from '@ant-design/icons'
-import { eraseCookie } from '../hooks'
+import { eraseCookie } from '../utils'
 import { useLocation, useNavigate } from 'react-router-dom'
 import styled from '@emotion/styled'
 import logo from '../assets/imgs/logo-udemy.svg'
-import { COMMON } from '@src/constants'
 import { includes } from 'lodash'
 import { useTranslation } from 'react-i18next'
+import { COMMON } from '@src/enums/global.enum'
 function Nav() {
   const location = useLocation()
 
@@ -37,7 +37,7 @@ function Nav() {
   `
 
   const SectionContainer = styled.section`
-    width: 100%
+    width: 100%;
     height: 80px;
     background: ${COMMON.bg_nav};
     cursor: pointer;

@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 
 import { UserInfo } from '@src/types/global.type'
-import { getCookie, eraseCookie, showToast } from '@src/hooks'
+import { getCookie, eraseCookie, showToast } from '@src/utils'
 import { AXIOS_CONFIG } from '../enums/global.enum'
 // import { showLoader } from '../features/Loading'
 

@@ -5,7 +5,7 @@ export default class CommonApi {
 
   static async list(query?: any): Promise<any> {
     return apiService
-      .get(`${this.baseUrl}`, { query })
+      .get(`${this.baseUrl}`, { params: query })
       .then((res) => res.data)
   }
 
@@ -19,5 +19,9 @@ export default class CommonApi {
 
   static async edit(body: any): Promise<any> {
     return apiService.put(`${this.baseUrl}`, body)
+  }
+
+  static async delete(id: string): Promise<any> {
+    return apiService.delete(`${this.baseUrl}/${id}`)
   }
 }

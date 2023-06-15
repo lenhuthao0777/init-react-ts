@@ -1,7 +1,7 @@
 import TableBase from '@components/TableBase'
 import User from '@src/apis/User.api'
 import { showLoader } from '@src/features/Loading'
-import { showToast } from '@src/hooks'
+import { showToast } from '@src/utils'
 import { TableBaseHeaderType, UserType } from '@src/types/global.type'
 import { useEffect, useMemo, useState } from 'react'
 import { useAppDispatch } from '../../app/hook'

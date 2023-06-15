@@ -1,4 +1,4 @@
-import { getCookie } from '@src/hooks'
+import { getCookie } from '@src/utils'
 import { createContext, ReactNode, type FC } from 'react'
 
 interface ContextProps {
