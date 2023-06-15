@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../app/store'
 import { UserInfo } from '../types/global.type'
-import { eraseCookie, getCookie, setCookie } from '../hooks'
+import { eraseCookie, getCookie, setCookie } from '../utils'
 
 const initialState: UserInfo | null = {
   email: '',
