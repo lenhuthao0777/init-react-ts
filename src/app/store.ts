@@ -1,14 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import loadingSlice from '../features/Loading'
-import home from '../features/Home'
+import homeSlice from '../features/Home'
 import userInfoSlice from '../features/UserInfo'
 
 export const store = configureStore({
   reducer: {
     loading: loadingSlice,
-    home,
-    userInformation: userInfoSlice
+    home: homeSlice,
+    userInformation: userInfoSlice,
   },
 })
 

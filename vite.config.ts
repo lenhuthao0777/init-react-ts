@@ -19,8 +19,12 @@ export default defineConfig({
       // axios: './src/services/AxiosClient.ts',
     }),
   ],
-  // server: {
-  //   port: 1101,
-  //   origin: 'https://max.technology.com.vn:1101',
-  // },
+  server: {
+    host: true,
+    port: 8000,
+    watch: {
+      usePolling: true,
+    },
+    // origin: 'https://max.technology.com.vn:1101',
+  },
 })

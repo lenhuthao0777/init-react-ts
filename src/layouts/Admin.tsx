@@ -24,7 +24,10 @@ const useAuth = () => {
 
   const partUserInfo: UserInfo = userInfo ? JSON.parse(userInfo as any) : {}
 
-  const user: any = { loggedIn: roles.includes(Number(partUserInfo.role)), info: isEmpty(partUserInfo) ? false : true }
+  const user: any = {
+    loggedIn: roles.includes(Number(partUserInfo.role)),
+    info: isEmpty(partUserInfo) ? false : true,
+  }
 
   return user
 }
@@ -43,22 +46,17 @@ const Admin = ({ children }: PropsWithChildren) => {
   }, [])
 
   return (
-    <div className="h-vh">
-      <div className="flex">
-        <section className="nav w-60 h-screen bg-white">
+    <div className='h-vh'>
+      <div className='flex'>
+        <section className='nav w-60 h-screen bg-white'>
           <SideBar role={auth} />
         </section>
 
-        <section className="w-screen  flex-1">
+        <section className='w-screen  flex-1'>
           <Nav />
 
-          <section
-            css={css`
-              height: calc(100vh - 80px);
-            `}
-            className="content relative pt-4 pl-4 pr-4 "
-          >
-            <div className="overflow-auto h-full">
+          <section className='content h-[calc(100vh - 80px)] relative pt-4 pl-4 pr-4 '>
+            <div className='overflow-auto h-full'>
               {children}
 
               <Outlet />

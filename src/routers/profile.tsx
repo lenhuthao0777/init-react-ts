@@ -5,7 +5,7 @@ const Profile = lazy(() => import('@pages/Profile'))
 
 const ProfileRoute = {
   id: uuid(),
-  path: '/profile',
+  path: 'profile',
   loader: () => {},
   children: [
     {

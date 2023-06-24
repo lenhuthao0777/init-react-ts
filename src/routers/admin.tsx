@@ -8,7 +8,7 @@ const Admin = lazy(() => import('@layouts/Admin'))
 
 const AdminRoute = {
   id: uuid(),
-  path: '/',
+  path: '/admin',
   element: <Admin />,
   routes: [HomeRoute, ProfileRoute],
 }

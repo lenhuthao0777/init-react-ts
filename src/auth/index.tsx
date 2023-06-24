@@ -1,13 +1,18 @@
-import React, { PropsWithChildren } from 'react'
+import { FC, ReactNode } from 'react'
 import { Route } from 'react-router-dom'
 
-// type Props = {
-//   children?: PropsWithChildren
-//   props: any
-// }
+type Props = {
+  children?: ReactNode
+  path: string
+  element: ReactNode
+}
 
-function Auth({ children, ...props }: PropsWithChildren) {
-  return <Route {...props}>{children}</Route>
+const Auth: FC<Props> = ({ children, path, element }) => {
+  return (
+    <Route path={path} element={element}>
+      {children}
+    </Route>
+  )
 }
 
 export default Auth

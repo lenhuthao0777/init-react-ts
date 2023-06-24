@@ -13,6 +13,10 @@ const en = {
     create_at: 'Create At',
     update_at: 'Update At',
     logout: 'Logout',
+    job: 'Jobs',
+    application: 'Application & CV',
+    company: 'Company',
+    tool: 'Tool',
   },
 }
 

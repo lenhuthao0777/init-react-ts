@@ -1,7 +1,11 @@
 import List from './List'
 
 function Home() {
-  return <List />
+  return (
+    <>
+      <h2>Home</h2>
+    </>
+  )
 }
 
 export default Home

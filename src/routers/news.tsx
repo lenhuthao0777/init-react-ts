@@ -5,7 +5,7 @@ const News = lazy(() => import('@pages/News'))
 
 const NewsRoute = {
   id: uuid(),
-  path: '/news',
+  path: '/',
   loader: () => {},
   children: [
     {
