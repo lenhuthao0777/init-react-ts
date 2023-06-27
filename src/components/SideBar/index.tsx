@@ -1,10 +1,6 @@
-import { Link } from 'react-router-dom'
-import { FaHome } from 'react-icons/fa'
+import { HomeOutlined } from '@ant-design/icons'
 // Components
-import { ROUTER_ENUM } from '../../routers/Router.enum'
 import { useTranslation } from 'react-i18next'
-import Logo from '../Logo'
-import { Fragment, useState } from 'react'
 import MenuItem from './MenuItem'
 
 const SideBar: any = () => {
@@ -14,7 +10,7 @@ const SideBar: any = () => {
     {
       label: 'Job',
       path: '',
-      icon: <FaHome />,
+      icon: <HomeOutlined />,
       sub: [
         {
           label: 'Home',
@@ -29,13 +25,8 @@ const SideBar: any = () => {
   ]
 
   return (
-    <>
-      <div className='h-20 flex items-center justify-center'>
-        <Link to={ROUTER_ENUM.BASE_URL}>
-          <Logo />
-        </Link>
-      </div>
-      <div className='mt-1'>
+    <div className='fixed h-screen flex-2 w-[280px] bg-white overflow-hidden shadow-sm z-10'>
+      <div className='overflow-auto'>
         <ul>
           {menuSideBar.map((item) => (
             <MenuItem
@@ -47,7 +38,7 @@ const SideBar: any = () => {
           ))}
         </ul>
       </div>
-    </>
+    </div>
   )
 }
 

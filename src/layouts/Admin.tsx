@@ -6,7 +6,6 @@ import { getCookie } from '../utils'
 import Nav from '../components/Nav'
 import { UserInfo } from '../types/global.type'
 import { isEmpty } from 'lodash'
-import { css } from '@emotion/react'
 import { ROUTER_ENUM } from '@src/routers/Router.enum'
 const roles: number[] = [1, 2, 4, 5]
 
@@ -33,37 +32,29 @@ const useAuth = () => {
 }
 
 const Admin = ({ children }: PropsWithChildren) => {
-  const auth: CheckUser = useAuth()
+  // const auth: CheckUser = useAuth()
 
   const navigate = useNavigate()
 
-  useEffect(() => {
-    if (!auth.info) {
-      return navigate(ROUTER_ENUM.LOGIN)
-    } else if (!auth.loggedIn) {
-      return navigate(ROUTER_ENUM.NOT_FOUND)
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (!auth.info) {
+  //     return navigate(ROUTER_ENUM.LOGIN)
+  //   } else if (!auth.loggedIn) {
+  //     return navigate(ROUTER_ENUM.NOT_FOUND)
+  //   }
+  // }, [])
 
   return (
-    <div className='h-vh'>
-      <div className='flex'>
-        <section className='nav w-60 h-screen bg-white'>
-          <SideBar role={auth} />
-        </section>
-
-        <section className='w-screen  flex-1'>
-          <Nav />
-
-          <section className='content h-[calc(100vh - 80px)] relative pt-4 pl-4 pr-4 '>
-            <div className='overflow-auto h-full'>
-              {children}
-
-              <Outlet />
-              <Loading />
-            </div>
-          </section>
-        </section>
+    <div>
+      <Nav />
+      <div className='flex flex-1 relative pt-[80px]'>
+        <SideBar />
+        <div className='pl-[280px] relative flex-1'>
+          <div className='p-5'>
+            <Outlet />
+            <Loading />
+          </div>
+        </div>
       </div>
     </div>
   )

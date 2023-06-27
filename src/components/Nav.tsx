@@ -63,29 +63,29 @@ function Nav() {
       : `
             display: flex;
             align-items: center;
-            justify-content: flex-end;;
+            justify-content: flex-end;
         `}
   `
 
   return (
-    <div
-      className={`h-[80px] px-[30px] flex items-center justify-between w-full bg-gradient-to-r from-blue-1 to-blue-3`}
+    <header
+      className={`z-10 h-[80px] px-[30px] shadow-md fixed flex items-center justify-between w-full bg-gradient-to-r from-blue-1 to-blue-3`}
     >
       <div className='flex items-center'>
+        <Fragment>
+          <Logo />
+        </Fragment>
         {isNews ? (
-          <Fragment>
-            <Logo />
-            <ul className='ml-10 flex'>
-              {menus.map((item: any) => (
-                <li
-                  key={item.id}
-                  className='list-none text-white font-bold text-sm p-5 cursor-pointer hover:text-slate-200 transition-all ease-in'
-                >
-                  {item.title}
-                </li>
-              ))}
-            </ul>
-          </Fragment>
+          <ul className='ml-10 flex'>
+            {menus.map((item: any) => (
+              <li
+                key={item.id}
+                className='list-none text-white font-bold text-sm p-5 cursor-pointer hover:text-slate-200 transition-all ease-in'
+              >
+                {item.title}
+              </li>
+            ))}
+          </ul>
         ) : null}
       </div>
       <div className='flex'>
@@ -93,7 +93,7 @@ function Nav() {
         </Popover> */}
         <Avatar className='cursor-pointer' icon={<UserOutlined />} />
       </div>
-    </div>
+    </header>
   )
 }
 

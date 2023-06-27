@@ -13,6 +13,9 @@ module.exports = {
           3: '#d4eff6'
         },
       },
+      flex: {
+        2: '0 0 280px'
+      }
     },
   },
   plugins: [],

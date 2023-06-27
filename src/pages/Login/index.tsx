@@ -60,7 +60,7 @@ const Login = () => {
       await showToast('success', res.message)
 
       if (res.code === 200) {
-        navigate(ROUTER_ENUM.NEWS)
+        navigate(ROUTER_ENUM.DEFAULT)
       }
     } catch (error: AxiosError | any) {
       const {

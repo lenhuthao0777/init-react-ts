@@ -25,7 +25,11 @@ export function eraseCookie(name: string) {
   document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;'
 }
 
-export const showToast = (type: string, message: string, position?: ToastPosition) => {
+export const showToast = (
+  type: string,
+  message: string,
+  position?: ToastPosition
+) => {
   switch (type) {
     case 'error':
       return toast.error(message, {
@@ -40,4 +44,17 @@ export const showToast = (type: string, message: string, position?: ToastPositio
     default:
       break
   }
+}
+
+export const removeEmpty = (params: any) => {
+  for (const key of Object.keys(params)) {
+    if (
+      params[key] === '' ||
+      params[key] === null ||
+      params[key] === undefined
+    ) {
+      delete params[key]
+    }
+  }
+  return params
 }

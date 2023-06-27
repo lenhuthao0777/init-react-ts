@@ -1,6 +1,6 @@
 import Collapse from '@components/Collpase'
 import { FC, ReactNode, useState } from 'react'
-import { FaAngleDown } from 'react-icons/fa'
+import { DownOutlined } from '@ant-design/icons'
 import { NavLink } from 'react-router-dom'
 
 type TPropsType = {
@@ -16,22 +16,24 @@ const MenuItem: FC<TPropsType> = ({ label, icon, subMenu }) => {
     setActive(!active)
   }
   return (
-    <li className=''>
-      <p
+    <li className='p-3'>
+      <div
         onClick={hdSubMenu}
-        className={`flex items-center justify-between p-3 rounded-sm cursor-pointer hover:bg-slate-300 ease-in transition `}
+        className={`flex items-center justify-between p-2 rounded-sm cursor-pointer hover:bg-slate-50 ease-in transition `}
       >
-        <span className='flex items-center'>
-          <span className='mr-2'>{icon}</span>
+        <div className='flex items-center'>
+          <span className='mr-2 flex items-center justify-center text-base'>
+            {icon}
+          </span>
           <span className='text-base'>{label}</span>
-        </span>
-        <span className={`flex ${active ? 'rotate-180' : ''}`}>
-          <FaAngleDown />
-        </span>
-      </p>
+        </div>
+        <div className={`flex text-base ${active ? 'rotate-180' : ''}`}>
+          <DownOutlined />
+        </div>
+      </div>
 
       <Collapse lazy open={active}>
-        <ul className='sub shadow-sm bg-[rgba(0,0,0,0.02)]'>
+        <ul className='shadow-sm bg-[rgba(0,0,0,0.02)]'>
           {subMenu.map((x: any) => (
             <li
               key={x.label}
