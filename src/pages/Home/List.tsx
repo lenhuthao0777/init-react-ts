@@ -1,5 +1,5 @@
 import TableBase from '@components/TableBase'
-import User from '@src/apis/User.api'
+import User from '@src/apis/Home.api'
 import { showLoader } from '@src/features/Loading'
 import { showToast } from '@src/utils'
 import { TableBaseHeaderType, UserType } from '@src/types/global.type'

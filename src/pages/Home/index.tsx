@@ -1,17 +1,20 @@
 import Btn from '@components/ButtonCustom'
 import PaginationCustom from '@components/Pagination'
-import User from '@src/apis/User.api'
+import HomeService from '@src/apis/Home.api'
+import { HomeContext, Context } from '@src/contexts/home.context'
 import { DATE_FORMAT } from '@src/enums/global.enum'
 import UrlParam from '@src/hooks/urlParam.hook'
 import { Select, Table } from 'antd'
 import moment from 'moment'
-import { useEffect, useMemo, useState } from 'react'
+import { useContext, useEffect, useMemo, useState } from 'react'
 function Home() {
   const [list, setList] = useState<any>()
 
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
   const [pg, setPg] = useState<any>({})
+
+  const [state, dispatch] = useContext(Context)
 
   const { pathName, objQueries, setQueries, selectOptions } = UrlParam()
 
@@ -85,7 +88,10 @@ function Home() {
     setIsLoading(true)
 
     try {
-      const { data, pagination } = await User.list({ ...objQueries, ...params })
+      const { data, pagination } = await HomeService.list({
+        ...objQueries,
+        ...params,
+      })
       setList(data)
       setPg(pagination)
       setIsLoading(false)
@@ -107,8 +113,9 @@ function Home() {
     fetchData()
   }, [])
 
+
   return (
-    <div>
+    <>
       <div className='flex items-end justify-end mb-3'>
         <div className='flex flex-col mr-3'>
           <span>Year</span>
@@ -119,7 +126,7 @@ function Home() {
           />
         </div>
 
-        <Btn label='search' onClick={search} />
+        <Btn label='search' onClick={()=>dispatch('test')} />
       </div>
       <Table
         rowKey={'_id'}
@@ -133,7 +140,7 @@ function Home() {
         total_page={pg.total_page}
         onChange={onPg}
       />
-    </div>
+    </>
   )
 }
 

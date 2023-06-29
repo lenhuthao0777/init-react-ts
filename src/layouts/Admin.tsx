@@ -7,6 +7,7 @@ import Nav from '../components/Nav'
 import { UserInfo } from '../types/global.type'
 import { isEmpty } from 'lodash'
 import { ROUTER_ENUM } from '@src/routers/Router.enum'
+import { HomeContext } from '@src/contexts/home.context'
 const roles: number[] = [1, 2, 4, 5]
 
 interface authProps {
@@ -50,10 +51,12 @@ const Admin = ({ children }: PropsWithChildren) => {
       <div className='flex flex-1 relative pt-[80px]'>
         <SideBar />
         <div className='pl-[280px] relative flex-1'>
-          <div className='p-5'>
-            <Outlet />
-            <Loading />
-          </div>
+          <HomeContext>
+            <div className='p-5'>
+              <Outlet />
+              <Loading />
+            </div>
+          </HomeContext>
         </div>
       </div>
     </div>
