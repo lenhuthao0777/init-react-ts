@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect, useState, FC, ReactNode } from 'react'
+import { useRef, useLayoutEffect, useState, FC, ReactNode } from 'react'
 
 type TPropsType = {
   children?: ReactNode
@@ -31,7 +31,9 @@ const Collapse: FC<TPropsType> = ({
 }) => {
   const transition = `height ${transitionDuration} ${transitionTimingFunction}`
 
-  const [renderChildren, setRenderChildren] = useState(lazy ? open : true)
+  const [renderChildren, setRenderChildren] = useState<boolean>(
+    lazy ? open : true
+  )
 
   const containRef = useRef<any>(null)
 

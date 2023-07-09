@@ -1,20 +1,25 @@
 import { Pagination } from 'antd'
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { memo, useState } from 'react'
 
-const PaginationCustom: React.FC<{
+type TPageProps = {
   page?: number | undefined
   total_page?: number | undefined
   page_size?: number | undefined
   onChange?: (page: any, pageSize: any) => void
-}> = ({ page = 1, total_page = 10, page_size = 10, onChange }) => {
+}
+
+const PaginationCustom: React.FC<TPageProps> = ({
+  page = 1,
+  total_page = 10,
+  page_size = 10,
+  onChange,
+}) => {
   const [currPage, setCurrPage] = useState<number>(page)
-  const change = useCallback(
-    (page: any, pageSize: any) => {
-      setCurrPage(page)
-      onChange && onChange(page, pageSize)
-    },
-    [onChange]
-  )
+
+  const change = (page: any, pageSize: any) => {
+    setCurrPage(page)
+    onChange && onChange(page, pageSize)
+  }
 
   return (
     <div className='flex items-center justify-end mt-5'>
@@ -33,4 +38,4 @@ const PaginationCustom: React.FC<{
   )
 }
 
-export default PaginationCustom
+export default memo(PaginationCustom)

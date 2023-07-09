@@ -1,4 +1,5 @@
 import apiService from '@src/services/AxiosClient'
+import { TApiResponse } from '@src/types/global.type'
 
 export default class CommonApi {
   static baseUrl: string = ''

@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import icon from '@/public/icon.svg'
 const Logo: FC = () => {
   const navigate = useNavigate()
 
@@ -12,13 +12,10 @@ const Logo: FC = () => {
     <div>
       <p
         onClick={handleBackToHome}
-        className=' w-[120px] text-white font-bold cursor-pointer flex items-center'
+        className='w-[200px] text-base font-bold cursor-pointer flex items-center'
       >
-        <span className='text-3xl text-orange-200'>m</span>
-        <span className='text-4xl text-purple-200'>Y</span>
-        <span className='ml-1 text-4xl text-green-200'>J</span>
-        <span className='text-2xl text-yellow-200'>o</span>
-        <span className='text-3xl text-red-300 rotate-180'>B</span>
+        <img className='w-10' src={icon} alt='icon img' />
+        <span className='ml-2 font-bold text-2xl'>HOME BREW</span>
       </p>
     </div>
   )

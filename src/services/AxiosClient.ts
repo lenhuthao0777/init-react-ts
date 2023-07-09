@@ -14,12 +14,12 @@ axiosClient.interceptors.request.use(
   (request: any) => {
     // dispatch && dispatch(showLoader(true))
 
-    // const userInfo: UserInfo = getCookie(AXIOS_CONFIG.TOKEN) || null
+    const userInfo: UserInfo = getCookie(AXIOS_CONFIG.TOKEN) || null
 
-    // const partUserInfo: UserInfo = userInfo ? JSON.parse(userInfo as any) : {}
+    const partUserInfo: UserInfo = userInfo ? JSON.parse(userInfo as any) : {}
 
-    // if (partUserInfo.token)
-    //   request.headers.Authorization = `Bearer ${partUserInfo.token}`
+    if (partUserInfo.token)
+      request.headers.Authorization = `Bearer ${partUserInfo.token}`
 
     return request
   },
@@ -41,21 +41,21 @@ axiosClient.interceptors.response.use(
 
     if (error.response.status === 401) {
       // handle logout: clear cookies, move to login page
-      // await eraseCookie('userInfo')
+      await eraseCookie('userInfo')
 
-      // const url: string = window.location.origin
+      const url: string = window.location.origin
 
-      // const backToLogin: any = () => {
-      //   window.location.href = `${url}/login`
-      // }
+      const backToLogin: any = () => {
+        window.location.href = `${url}/login`
+      }
 
-      // await backToLogin()
+      await backToLogin()
 
-      // await showToast('error', 'Unauthorized!')
+      await showToast('error', 'Unauthorized!')
     }
     if (error.response.status === 500) {
       // handle notification for user server error
-      // await showToast('error', 'Server error!')
+      await showToast('error', 'Server error!')
     }
     return Promise.reject(error)
   }

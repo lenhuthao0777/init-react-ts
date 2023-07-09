@@ -24,3 +24,9 @@ export type UserType = {
   create_at: string
   update_at: string
 }
+
+export type TApiResponse<T> = {
+  message: string
+  status: number | string
+  data: T
+}

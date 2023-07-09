@@ -7,8 +7,8 @@ import {
 import { v4 as uuid } from 'uuid'
 // ENUM
 import { ROUTER_ENUM } from './Router.enum'
-import AdminRoute from './admin'
-import ClientRoute from './client'
+import AdminRoute from './auth/admin'
+import ClientRoute from './auth/client'
 
 // Components
 const Login = lazy(() => import('@pages/Login'))

@@ -15,7 +15,7 @@ function Nav() {
 
   const { t } = useTranslation()
 
-  const isNews = includes(location.pathname, 'news')
+  const admin = includes(location.pathname, 'admin')
 
   const menus: Array<{ id: number; title: string }> = [
     {
@@ -51,47 +51,47 @@ function Nav() {
     </div>
   )
 
-  const SectionContainer = styled.section`
-    width: 100%;
-    height: 80px;
-    background: ${COMMON.bg_nav};
-    cursor: pointer;
-    ${isNews
-      ? ` display: flex;
-            align-items: center;
-            justify-content: space-between;`
-      : `
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-        `}
-  `
+  // const SectionContainer = styled.section`
+  //   width: 100%;
+  //   height: 80px;
+  //   background: ${COMMON.bg_nav};
+  //   cursor: pointer;
+  //   ${admin
+  //     ? ` display: flex;
+  //           align-items: center;
+  //           justify-content: space-between;`
+  //     : `
+  //           display: flex;
+  //           align-items: center;
+  //           justify-content: flex-end;
+  //       `}
+  // `
 
   return (
     <header
-      className={`z-10 h-[80px] px-[30px] shadow-md fixed flex items-center justify-between w-full bg-gradient-to-r from-blue-1 to-blue-3`}
+      className={`z-10 h-[80px] px-[100px] shadow-md fixed flex items-center justify-between w-full bg-white`}
     >
       <div className='flex items-center'>
         <Fragment>
           <Logo />
         </Fragment>
-        {isNews ? (
-          <ul className='ml-10 flex'>
+      </div>
+      <div className='flex'>
+        {!admin ? (
+          <ul className='ml-10 flex items-center'>
             {menus.map((item: any) => (
               <li
                 key={item.id}
-                className='list-none text-white font-bold text-sm p-5 cursor-pointer hover:text-slate-200 transition-all ease-in'
+                className='list-none text-base p-5 cursor-pointer hover:text-blue-1 transition-all ease-in font-semibold'
               >
                 {item.title}
               </li>
             ))}
           </ul>
         ) : null}
-      </div>
-      <div className='flex'>
         {/* <Popover placement='topRight' content={content} title='Johnny'>
         </Popover> */}
-        <Avatar className='cursor-pointer' icon={<UserOutlined />} />
+        {/* <Avatar className='cursor-pointer' icon={<UserOutlined />} /> */}
       </div>
     </header>
   )

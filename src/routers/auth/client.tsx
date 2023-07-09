@@ -2,7 +2,7 @@ import Client from '@layouts/Client'
 import { v4 as uuid } from 'uuid'
 
 import News from '@pages/News'
-import NewsRoute from './news'
+import NewsRoute from '../news'
 
 const ClientRoute = {
   id: uuid(),

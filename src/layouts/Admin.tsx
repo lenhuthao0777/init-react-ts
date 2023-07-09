@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode, useEffect } from 'react'
+import { FC, ReactNode, useEffect } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import Loading from '../components/Loading'
 import SideBar from '../components/SideBar'
@@ -32,16 +32,16 @@ const useAuth = () => {
   return user
 }
 
-const Admin = ({ children }: PropsWithChildren) => {
-  // const auth: CheckUser = useAuth()
+const Admin: FC = () => {
+  const auth: CheckUser = useAuth()
 
   const navigate = useNavigate()
 
   // useEffect(() => {
   //   if (!auth.info) {
-  //     return navigate(ROUTER_ENUM.LOGIN)
+  //     return navigate('/login')
   //   } else if (!auth.loggedIn) {
-  //     return navigate(ROUTER_ENUM.NOT_FOUND)
+  //     return navigate('/*')
   //   }
   // }, [])
 

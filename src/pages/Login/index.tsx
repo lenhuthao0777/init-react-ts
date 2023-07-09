@@ -48,19 +48,20 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const res: any = await Auth.login(userInfo)
-
+      const {
+        status,
+        message,
+        data: { token },
+      } = await Auth.login(userInfo)
       await setCookie(
         'userInfo',
         JSON.stringify({
-          ...res.data,
+          token,
         })
       )
-
-      await showToast('success', res.message)
-
-      if (res.code === 200) {
-        navigate(ROUTER_ENUM.DEFAULT)
+      await showToast('success', message)
+      if (status === 200) {
+        navigate('/admin/home')
       }
     } catch (error: AxiosError | any) {
       const {
@@ -75,7 +76,6 @@ const Login = () => {
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const target: HTMLInputElement = e.target
-
     setUserInfo({
       ...userInfo,
       [`${target.name}`]: target.value,
@@ -87,11 +87,9 @@ const Login = () => {
       const { redirectTo } = QueryString.parse(location.search, {
         ignoreQueryPrefix: true,
       })
-
       if (redirectTo) {
         redirect(redirectTo as string)
       }
-
       return navigate('/')
     }
   }, [auth])
