@@ -69,7 +69,9 @@ function Nav() {
 
   return (
     <header
-      className={`z-10 h-[80px] px-[100px] shadow-md fixed flex items-center justify-between w-full bg-white`}
+      className={`z-10 h-[80px] px-[100px] ${
+        admin ? '' : 'shadow-md'
+      } fixed flex items-center justify-between w-full bg-white`}
     >
       <div className='flex items-center'>
         <Fragment>

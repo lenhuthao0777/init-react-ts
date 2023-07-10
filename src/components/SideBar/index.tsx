@@ -15,10 +15,12 @@ const SideBar: any = () => {
         {
           label: 'Home',
           path: 'home',
+          isPrivate: false,
         },
         {
           label: 'Profile',
           path: 'profile',
+          isPrivate: false,
         },
       ],
     },

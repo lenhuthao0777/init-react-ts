@@ -8,7 +8,9 @@ const Client: React.FC<PropsWithChildren> = () => {
     <div className='h-vh bg-[#f1f2f6]'>
       <Nav />
       <div className='pt-[80px] relative m-auto w-[1200px]'>
-        <Outlet />
+        <div className='py-5'>
+          <Outlet />
+        </div>
         <Loading />
       </div>
     </div>

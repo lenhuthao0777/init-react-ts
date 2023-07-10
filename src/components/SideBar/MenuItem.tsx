@@ -16,10 +16,10 @@ const MenuItem: FC<TPropsType> = ({ label, icon, subMenu }) => {
     setActive(!active)
   }
   return (
-    <li className='p-3'>
+    <li>
       <div
         onClick={hdSubMenu}
-        className={`flex items-center justify-between p-2 rounded-sm cursor-pointer hover:bg-slate-50 ease-in transition `}
+        className={`flex items-center justify-between py-2 px-5 shadow-inner rounded-sm cursor-pointer hover:bg-slate-50 ease-in transition `}
       >
         <div className='flex items-center'>
           <span className='mr-2 flex items-center justify-center text-base'>
@@ -33,26 +33,31 @@ const MenuItem: FC<TPropsType> = ({ label, icon, subMenu }) => {
       </div>
 
       <Collapse lazy open={active}>
-        <ul className='shadow-sm bg-[rgba(0,0,0,0.02)]'>
-          {subMenu.map((x: any) => (
-            <li
-              key={x.label}
-              className={`text-sm cursor-pointer hover:opacity-90 transition-all ease-in`}
-            >
-              <NavLink
-                style={({ isActive, isPending }) => {
-                  return {
-                    backgroundColor: isActive ? '#60a4fa' : '',
-                    color: isActive ? '#ffffff' : '',
-                  }
-                }}
-                className='w-full pl-9 py-2 flex rounded-sm hover:text-gray-900'
-                to={x.path}
-              >
-                <span>{x.label}</span>
-              </NavLink>
-            </li>
-          ))}
+        <ul className='shadow-sm bg-[rgba(0,0,0,0.08)]'>
+          {subMenu.map(
+            (x: { label: string; path: string; isPrivate: boolean }) => (
+              <div key={x.label}>
+                {!x.isPrivate ? (
+                  <li
+                    className={`text-sm cursor-pointer hover:opacity-90 transition-all ease-in`}
+                  >
+                    <NavLink
+                      style={({ isActive, isPending }) => {
+                        return {
+                          backgroundColor: isActive ? '#60a4fa' : '',
+                          color: isActive ? '#ffffff' : '',
+                        }
+                      }}
+                      className='w-full pl-9 py-2 flex rounded-sm hover:text-gray-900'
+                      to={x.path}
+                    >
+                      <span>{x.label}</span>
+                    </NavLink>
+                  </li>
+                ) : null}
+              </div>
+            )
+          )}
         </ul>
       </Collapse>
     </li>

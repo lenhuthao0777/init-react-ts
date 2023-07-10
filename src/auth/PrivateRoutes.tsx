@@ -3,11 +3,12 @@ import { Route } from 'react-router-dom'
 
 type Props = {
   children?: ReactNode
-  path: string
-  element: ReactNode
+  path?: string
+  element?: ReactNode
+  idx?: boolean
 }
 
-const Auth: FC<Props> = ({ children, path, element }) => {
+const PrivateRoutes: FC<Props> = ({ children, path, element, idx = true }) => {
   return (
     <Route path={path} element={element}>
       {children}
@@ -15,4 +16,4 @@ const Auth: FC<Props> = ({ children, path, element }) => {
   )
 }
 
-export default Auth
+export default PrivateRoutes
