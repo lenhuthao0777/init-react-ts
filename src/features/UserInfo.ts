@@ -3,9 +3,11 @@ import { RootState } from '../app/store'
 import { UserInfo } from '../types/global.type'
 import { eraseCookie, getCookie, setCookie } from '../utils'
 
-const initialState: UserInfo | null = {
-  email: '',
-  password: '',
+const initialState: any | null = {
+  user: {
+    email: '',
+    password: '',
+  },
   role: [],
 }
 
@@ -13,12 +15,10 @@ export const userInfoSlice = createSlice({
   name: 'userInfo',
   initialState,
   reducers: {
-    login: (state: UserInfo, action: PayloadAction<UserInfo>) => {
-      const getUserInfo = getCookie('userInfo')
-
-      const userInfo = getUserInfo && JSON.parse(getUserInfo)
-
-      state = { ...userInfo }
+    login: (state, action: PayloadAction<UserInfo>) => {
+      state.user = {
+        ...action.payload,
+      }
     },
 
     logout: (state: UserInfo | null) => {

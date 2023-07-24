@@ -8,6 +8,7 @@ import { getCookie, setCookie, showToast } from '../../utils'
 import { ROUTER_ENUM } from '@src/routers/Router.enum'
 import Auth from '@src/apis/Auth.api'
 import { useAppDispatch } from '@app/hook'
+import { login } from '@/src/features/UserInfo'
 
 // Style
 const Container = styled.div`
@@ -48,15 +49,12 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const {
-        status,
-        message,
-        data: { token },
-      } = await Auth.login(userInfo)
+      const { status, message, data } = await Auth.login(userInfo)
+      dispatch(login(data))
       await setCookie(
         'userInfo',
         JSON.stringify({
-          token,
+          data,
         })
       )
       await showToast('success', message)
