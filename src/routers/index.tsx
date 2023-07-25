@@ -3,7 +3,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-  Routes
+  Routes,
 } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 // ENUM
@@ -32,7 +32,7 @@ type children = {
 
 const routers = [
   // Role Admin
-  AdminRoute,
+  // AdminRoute,
   // Client
   ClientRoute,
   // Auth

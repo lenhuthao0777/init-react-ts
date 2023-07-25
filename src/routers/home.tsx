@@ -1,7 +1,7 @@
 import { lazy } from 'react'
 import { v4 as uuid } from 'uuid'
 
-const Home = lazy(() => import('@pages/Home'))
+const HomePage = lazy(() => import('@pages/Home'))
 
 const HomeRoute = {
   id: uuid(),
@@ -11,7 +11,7 @@ const HomeRoute = {
     {
       id: uuid(),
       path: '',
-      element: <Home />,
+      element: <HomePage />,
       loader: () => {},
       index: true,
     },

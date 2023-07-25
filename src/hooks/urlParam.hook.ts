@@ -1,4 +1,4 @@
-import { removeEmpty } from '@src/utils'
+import { removeEmpty } from '@src/libs/utils'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useLocation, useSearchParams } from 'react-router-dom'
 
@@ -14,7 +14,7 @@ const UrlParam = (initParams?: any) => {
   const objQueries: any = useMemo(() => {
     let result: any = {
       page: 1,
-      page_size: 10
+      page_size: 10,
     }
 
     for (let [key, value] of searchParams.entries()) {

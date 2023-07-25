@@ -1,5 +1,4 @@
 import { css } from '@emotion/react'
-import { Button } from 'antd'
 import React from 'react'
 import { useNavigate, useParams, useLocation } from 'react-router-dom'
 
@@ -34,9 +33,9 @@ const PageNotFound = () => {
           <span className='text-red-500 ml-2'> Not Found</span>
         </h3>
         <div className='flex items-center justify-center'>
-          <Button type='primary' danger onClick={handleBack}>
+          {/* <Button type='primary' danger onClick={handleBack}>
             Back To Home Page
-          </Button>
+          </Button> */}
         </div>
       </div>
     </div>
