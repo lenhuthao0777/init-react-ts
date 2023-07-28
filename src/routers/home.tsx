@@ -5,7 +5,7 @@ const HomePage = lazy(() => import('@pages/Home'))
 
 const HomeRoute = {
   id: uuid(),
-  path: 'home',
+  path: '',
   loader: () => {},
   children: [
     {
