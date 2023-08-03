@@ -5,12 +5,10 @@ import { Outlet } from 'react-router-dom'
 
 const Client: React.FC<PropsWithChildren> = () => {
   return (
-    <div className='h-vh bg-[#f1f2f6]'>
+    <div className='h-vh mt-24'>
       <Nav />
-      <div className='pt-[80px] relative m-auto w-[1200px]'>
-        <div className='py-5'>
-          <Outlet />
-        </div>
+      <div className='container'>
+        <Outlet />
         <Loading />
       </div>
     </div>

@@ -5,7 +5,7 @@ import HomeRoute from '../home'
 
 const ClientRoute = {
   id: uuid(),
-  path: '',
+  path: '/',
   element: <Client />,
   routes: [HomeRoute],
 }
