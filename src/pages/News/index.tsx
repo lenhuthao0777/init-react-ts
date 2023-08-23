@@ -1,9 +1,20 @@
-import React from 'react'
+import Btn from '@/src/components/ButtonCustom';
+import FormCustom from '@/src/components/Form/Form';
+import InputCustom from '@/src/components/Inputs/InputCustom';
+import React from 'react';
 
 const News: React.FC = () => {
-  console.log('new');
-  
-  return <div>News1111</div>
-}
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
 
-export default News
+  return (
+    <FormCustom onSubmit={onSubmit}>
+      <InputCustom name='test' rules={['required', 'decimal']} />
+
+      <Btn type='submit' label='Submit' />
+    </FormCustom>
+  );
+};
+
+export default News;

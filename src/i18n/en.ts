@@ -17,6 +17,10 @@ const en = {
     application: 'Application & CV',
     company: 'Company',
     tool: 'Tool',
+    validate: {
+      require: '{{field}} is not empty',
+      decimal: '{{field}} please enter a number'
+    }
   },
 }
 

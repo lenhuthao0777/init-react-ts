@@ -5,10 +5,11 @@ import vi from './vi'
 import jp from './jp'
 
 const resources = {
+  // English
   en,
-
+  // Vietnamese
   vi,
-
+  // Japanese
   jp,
 }
 

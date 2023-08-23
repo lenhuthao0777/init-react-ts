@@ -1,23 +1,39 @@
-import { Avatar, Popover } from 'antd'
-import { UserOutlined } from '@ant-design/icons'
-import { eraseCookie } from '../utils'
-import { useLocation, useNavigate } from 'react-router-dom'
-import styled from '@emotion/styled'
-import { includes } from 'lodash'
-import { useTranslation } from 'react-i18next'
-import { COMMON } from '@src/enums/global.enum'
-import Logo from './Logo'
-import { Fragment } from 'react'
+import { cn, eraseCookie } from '../lib/Utils';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { includes } from 'lodash';
+import { useTranslation } from 'react-i18next';
+import Logo from './Logo';
+import { Fragment, ReactNode, useContext } from 'react';
+import { UserOutlined } from '@ant-design/icons';
+import { Avatar, Popover } from 'antd';
+import { AuthContext } from '../contexts/auth.context';
 function Nav() {
-  const location = useLocation()
+  const [user, isLoading] = useContext(AuthContext);
 
-  const navigate = useNavigate()
+  const location = useLocation();
 
-  const { t } = useTranslation()
+  const navigate = useNavigate();
 
-  const admin = includes(location.pathname, 'admin')
+  const { t } = useTranslation();
 
-  const menus: Array<{ id: number; title: string }> = [
+  const admin = includes(location.pathname, 'admin');
+
+  const Logout = () => {
+    eraseCookie('userInfo');
+
+    navigate('/login');
+  };
+
+  const content = (
+    <div>
+      <p className='cursor-pointer' onClick={Logout}>
+        {t('logout')}
+      </p>
+      <p>{t('profile')}</p>
+    </div>
+  );
+
+  const menus: Array<{ id: number; title: string | ReactNode }> = [
     {
       id: 1,
       title: t('job'),
@@ -34,44 +50,32 @@ function Nav() {
       id: 4,
       title: t('tool'),
     },
-  ]
-
-  const Logout = () => {
-    eraseCookie('userInfo')
-
-    navigate('/login')
-  }
-
-  const content = (
-    <div>
-      <p className='cursor-pointer' onClick={Logout}>
-        {t('logout')}
-      </p>
-      <p>{t('profile')}</p>
-    </div>
-  )
-
-  // const SectionContainer = styled.section`
-  //   width: 100%;
-  //   height: 80px;
-  //   background: ${COMMON.bg_nav};
-  //   cursor: pointer;
-  //   ${admin
-  //     ? ` display: flex;
-  //           align-items: center;
-  //           justify-content: space-between;`
-  //     : `
-  //           display: flex;
-  //           align-items: center;
-  //           justify-content: flex-end;
-  //       `}
-  // `
+    {
+      id: 5,
+      title: (
+        <Popover placement='topRight' content={content} title={user?.email}>
+          {user ? (
+            <img
+              src={user?.profile?.avatar?.url}
+              alt='img'
+              className='w-6 h-6 rounded-full object-cover'
+            />
+          ) : (
+            <Avatar
+              className='cursor-pointer'
+              icon={<UserOutlined size={24} />}
+            />
+          )}
+        </Popover>
+      ),
+    },
+  ];
 
   return (
     <header
-      className={`z-10 h-[80px] px-[100px] ${
-        admin ? '' : 'shadow-md'
-      } fixed flex items-center justify-between w-full bg-white`}
+      className={cn(
+        'fixed top-0 left-0 flex items-center justify-between w-full bg-white h-20 px-20 shadow z-10'
+      )}
     >
       <div className='flex items-center'>
         <Fragment>
@@ -91,12 +95,9 @@ function Nav() {
             ))}
           </ul>
         ) : null}
-        {/* <Popover placement='topRight' content={content} title='Johnny'>
-        </Popover> */}
-        {/* <Avatar className='cursor-pointer' icon={<UserOutlined />} /> */}
       </div>
     </header>
-  )
+  );
 }
 
-export default Nav
+export default Nav;

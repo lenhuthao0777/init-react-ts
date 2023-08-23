@@ -4,7 +4,7 @@ import QueryString from 'qs'
 import styled from 'styled-components'
 import { AxiosError } from 'axios'
 
-import { getCookie, setCookie, showToast } from '../../utils'
+import { getCookie, setCookie, showToast } from '../../lib/Utils'
 import { ROUTER_ENUM } from '@src/routers/Router.enum'
 import Auth from '@src/apis/Auth.api'
 import { useAppDispatch } from '@app/hook'
