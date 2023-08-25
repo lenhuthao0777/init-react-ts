@@ -19,7 +19,8 @@ const en = {
     tool: 'Tool',
     validate: {
       require: '{{field}} is not empty',
-      decimal: '{{field}} please enter a number'
+      decimal: '{{field}} please enter a decimal number',
+      number: '{{field}} please enter a number',
     }
   },
 }

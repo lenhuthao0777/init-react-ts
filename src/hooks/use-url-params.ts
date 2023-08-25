@@ -1,13 +1,15 @@
 import { removeEmpty } from '@/src/lib/Utils';
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useLocation, useMatch, useSearchParams } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
-const UrlParam = (initParams?: any) => {
+const UseUrlParams = (initParams?: any) => {
   const [data, setData] = useState();
 
   const [searchParams, setSearchPrams] = useSearchParams();
 
   const location = useLocation();
+
+  const params = Object.fromEntries([...searchParams]);
 
   const pathName: string = location.pathname;
 
@@ -15,17 +17,11 @@ const UrlParam = (initParams?: any) => {
     let result: any = {
       page: 1,
       page_size: 10,
+      ...params,
     };
 
-    for (let [key, value] of searchParams.entries()) {
-      result = {
-        ...result,
-        [key]: value,
-      };
-    }
-
     return removeEmpty(result);
-  }, [searchParams.entries()]);
+  }, [params]);
 
   const setQueries = (queries: any) => {
     setSearchPrams({ ...initParams, ...objQueries, ...queries });
@@ -39,7 +35,12 @@ const UrlParam = (initParams?: any) => {
     setQueries({ ...initParams });
   }, []);
 
-  return { pathName, objQueries, setQueries, selectOptions };
+  return {
+    pathName,
+    objQueries,
+    setQueries,
+    selectOptions,
+  };
 };
 
-export default UrlParam;
+export default UseUrlParams;

@@ -7,11 +7,15 @@ export const Validations = (field: string) => {
     validation: {
       required: {
         required: true,
-        message: t('validate.require', { field: field }),
+        message: t('validate.require', { field }),
       },
       decimal: {
-        message: t('validate.decimal', { field: field }),
-        pattern: new RegExp(/^[0-9]+$/)
+        message: t('validate.decimal', { field }),
+        pattern: new RegExp(/^\d*\.?\d*$/),
+      },
+      number: {
+        message: t('validate.number', { field }),
+        pattern: new RegExp(/^-?(?:\d+|\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/),
       },
     },
   };

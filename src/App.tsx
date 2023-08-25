@@ -4,11 +4,12 @@ import { RouterProvider } from 'react-router-dom';
 import Toast from '@components/Toast';
 import 'react-toastify/dist/ReactToastify.css';
 import UseQueryProvider from './contexts/use-query';
+import { Spin } from 'antd';
 
 function App() {
   return (
     <Fragment>
-      <Suspense fallback={<div>Loading......</div>}>
+      <Suspense fallback={<Spin size='large'/>}>
         <UseQueryProvider>
           <RouterProvider router={router} />
           <Toast />

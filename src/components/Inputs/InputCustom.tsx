@@ -7,9 +7,11 @@ interface PropsInputCustom {
   disabled?: boolean;
   className?: string;
   placeholder?: string;
+  label?: string;
   name: string;
   prefix?: ReactNode;
   rules: Array<string>;
+  type?: string;
   hdChange?: (name: string, value: string) => void;
 }
 
@@ -19,10 +21,12 @@ const InputCustom: React.FC<PropsInputCustom> = ({
   placeholder,
   name,
   prefix,
+  label,
   rules,
+  type = 'text',
   hdChange,
 }) => {
-  const { validation } = Validations(name);
+  const { validation } = Validations((label as string) || name);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -45,8 +49,9 @@ const InputCustom: React.FC<PropsInputCustom> = ({
   }, [validation]);
 
   return (
-    <FormItem name={name} rules={handleRules}>
+    <FormItem label={label} name={name} rules={handleRules}>
       <Input
+        type={type}
         disabled={disabled}
         className={className}
         prefix={prefix}

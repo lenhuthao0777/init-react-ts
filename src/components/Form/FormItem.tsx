@@ -3,18 +3,24 @@ import React, { ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;
-  require?: boolean;
+  required?: boolean;
   rules?: Array<any>;
-  name: string
+  label?: string;
+  name: string;
 }
 
-const FormItem: React.FC<Props> = ({ children, rules, require, name }) => {
-  const validate = [
-    {
-
-    }
-  ]
-  return <Form.Item name={name} rules={rules && rules}>{children}</Form.Item>;
+const FormItem: React.FC<Props> = ({
+  children,
+  rules,
+  label,
+  required,
+  name,
+}) => {
+  return (
+    <Form.Item label={label} name={name} rules={rules && rules}>
+      {children}
+    </Form.Item>
+  );
 };
 
 export default FormItem;

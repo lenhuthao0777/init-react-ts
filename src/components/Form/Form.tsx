@@ -3,15 +3,24 @@ import { Form } from 'antd';
 
 interface Props {
   children: ReactNode;
+  width?: number;
+  labelCol?: number;
+  wrapperCol?: number;
   onSubmit: (data: any) => void;
 }
 
-const FormCustom: React.FC<Props> = ({ children, onSubmit }) => {
+const FormCustom: React.FC<Props> = ({
+  children,
+  onSubmit,
+  width = 500,
+  labelCol = 4,
+  wrapperCol = 20,
+}) => {
   return (
     <Form
-      style={{ minWidth: 500 }}
-      labelCol={{ span: 8 }}
-      wrapperCol={{ span: 16 }}
+      style={{ width }}
+      labelCol={{ span: labelCol }}
+      wrapperCol={{ span: wrapperCol }}
       initialValues={{ remember: true }}
       autoComplete='off'
       onFinish={onSubmit}
