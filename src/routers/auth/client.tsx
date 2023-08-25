@@ -8,7 +8,7 @@ const ClientRoute = {
   id: uuid(),
   path: '/',
   element: <Client />,
-  routes: [NewsRoute],
+  routes: [NewsRoute]
 }
 
 export default ClientRoute

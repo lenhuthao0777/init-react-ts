@@ -13,9 +13,9 @@ const ProfileRoute = {
       path: '',
       element: <Profile />,
       loader: () => {},
-      index: false,
-    },
-  ],
+      index: false
+    }
+  ]
 }
 
 export default ProfileRoute

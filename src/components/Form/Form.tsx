@@ -1,21 +1,15 @@
-import React, { ReactNode } from 'react';
-import { Form } from 'antd';
+import React, { ReactNode } from 'react'
+import { Form } from 'antd'
 
 interface Props {
-  children: ReactNode;
-  width?: number;
-  labelCol?: number;
-  wrapperCol?: number;
-  onSubmit: (data: any) => void;
+  children: ReactNode
+  width?: number
+  labelCol?: number
+  wrapperCol?: number
+  onSubmit: (data: any) => void
 }
 
-const FormCustom: React.FC<Props> = ({
-  children,
-  onSubmit,
-  width = 500,
-  labelCol = 4,
-  wrapperCol = 20,
-}) => {
+const FormCustom: React.FC<Props> = ({ children, onSubmit, width = 500, labelCol = 4, wrapperCol = 20 }) => {
   return (
     <Form
       style={{ width }}
@@ -27,7 +21,7 @@ const FormCustom: React.FC<Props> = ({
     >
       {children}
     </Form>
-  );
-};
+  )
+}
 
-export default FormCustom;
+export default FormCustom

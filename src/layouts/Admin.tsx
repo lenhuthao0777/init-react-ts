@@ -1,44 +1,44 @@
-import { FC, Fragment, ReactNode, useEffect } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
-import { isEmpty } from 'lodash';
+import { FC, Fragment, ReactNode, useEffect } from 'react'
+import { Outlet, useNavigate } from 'react-router-dom'
+import { isEmpty } from 'lodash'
 
 // Components
-import Loading from '../components/Loading';
-import SideBar from '../components/SideBar';
-import { getCookie } from '../lib/Utils';
-import Nav from '../components/Nav';
-import { UserInfo } from '../types/global.type';
-import { ROUTER_ENUM } from '@src/routers/Router.enum';
-import { HomeContext } from '@src/contexts/home.context';
+import Loading from '../components/Loading'
+import SideBar from '../components/SideBar'
+import { getCookie } from '../lib/Utils'
+import Nav from '../components/Nav'
+import { UserInfo } from '../types/global.type'
+import { ROUTER_ENUM } from '@src/routers/Router.enum'
+import { HomeContext } from '@/src/contexts/Home.context'
 
-const roles: number[] = [1, 2, 4, 5];
+const roles: number[] = [1, 2, 4, 5]
 
 interface authProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 type CheckUser = {
-  loggedIn: boolean;
-  info: boolean;
-};
+  loggedIn: boolean
+  info: boolean
+}
 
 const useAuth = () => {
-  const userInfo: UserInfo = getCookie('userInfo');
+  const userInfo: UserInfo = getCookie('userInfo')
 
-  const partUserInfo: UserInfo = userInfo ? JSON.parse(userInfo as any) : {};
+  const partUserInfo: UserInfo = userInfo ? JSON.parse(userInfo as any) : {}
 
   const user: any = {
     loggedIn: roles.includes(Number(partUserInfo.role)),
-    info: isEmpty(partUserInfo) ? false : true,
-  };
+    info: isEmpty(partUserInfo) ? false : true
+  }
 
-  return user;
-};
+  return user
+}
 
 const Admin: FC = () => {
-  const auth: CheckUser = useAuth();
+  const auth: CheckUser = useAuth()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   // useEffect(() => {
   //   if (!auth.info) {
@@ -63,7 +63,7 @@ const Admin: FC = () => {
         </HomeContext>
       </div>
     </Fragment>
-  );
-};
+  )
+}
 
-export default Admin;
+export default Admin

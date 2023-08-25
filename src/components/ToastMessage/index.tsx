@@ -55,9 +55,9 @@ const ToastMessage: React.FC<ToastProps> = ({ isShow = false, message, type, bgC
 
   const TextMessageBlock = styled.span``
   return isShow ? (
-    <ToastContainer className="absolute flex items-center top-0">
-      <IconBlock className="icon mr-1">{handleIcon(type)}</IconBlock>
-      <TextMessageBlock className="message">{message}</TextMessageBlock>
+    <ToastContainer className='absolute flex items-center top-0'>
+      <IconBlock className='icon mr-1'>{handleIcon(type)}</IconBlock>
+      <TextMessageBlock className='message'>{message}</TextMessageBlock>
     </ToastContainer>
   ) : null
 }

@@ -5,9 +5,7 @@ export default class CommonApi {
   static baseUrl: string = ''
 
   static async list(query?: any): Promise<any> {
-    return apiService
-      .get(`${this.baseUrl}`, { params: query })
-      .then((res) => res.data)
+    return apiService.get(`${this.baseUrl}`, { params: query }).then((res) => res.data)
   }
 
   static async detail(id: number | string): Promise<any> {

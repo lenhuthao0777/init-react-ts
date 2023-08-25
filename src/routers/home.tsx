@@ -1,7 +1,7 @@
-import { lazy } from 'react';
-import { v4 as uuid } from 'uuid';
+import { lazy } from 'react'
+import { v4 as uuid } from 'uuid'
 
-const Home = lazy(() => import('@pages/Home'));
+const Home = lazy(() => import('@pages/Home'))
 
 const HomeRoute = {
   id: uuid(),
@@ -13,9 +13,9 @@ const HomeRoute = {
       path: '',
       element: <Home />,
       loader: () => {},
-      index: true,
-    },
-  ],
-};
+      index: true
+    }
+  ]
+}
 
-export default HomeRoute;
+export default HomeRoute

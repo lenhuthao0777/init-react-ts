@@ -1,0 +1,66 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring templates.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+/tmp
+
+# misc
+.DS_Store
+.env
+.env.local
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.idea
+
+# DynamoDB local
+**/.dynamodb/*
+
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+*.tfvars
+
+# Crash log files
+crash.log
+
+# Ignore CLI configuration files
+**/.terraformrc
+**/.terraform.rc
+docs/_book
+docs/node_modules
+credentials/aws-exports.js
+graphql/schema/.graphqlconfig
+
+.vscode/launch.json
+
+
+src/application/entities/graphql.ts
+src/application/entities/forms
+
+# Configuration file
+tailwind.config.js
+postcss.config.js
+jest.setup.js
+jest.config.js
+graphql-schema-linter.config.js
+babel.config.js
+apollo.config.js
+next.config.js

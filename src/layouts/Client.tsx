@@ -1,8 +1,8 @@
-import Loading from '@components/Loading';
-import Nav from '@components/Nav';
-import React, { Fragment, PropsWithChildren } from 'react';
-import { Outlet } from 'react-router-dom';
-import { AuthProvider } from '@src/contexts/auth.context';
+import Loading from '@components/Loading'
+import Nav from '@components/Nav'
+import React, { Fragment, PropsWithChildren } from 'react'
+import { Outlet } from 'react-router-dom'
+import { AuthProvider } from '@/src/contexts/Auth.context'
 
 const Client: React.FC<PropsWithChildren> = () => {
   return (
@@ -19,7 +19,7 @@ const Client: React.FC<PropsWithChildren> = () => {
         </div>
       </AuthProvider>
     </Fragment>
-  );
-};
+  )
+}
 
-export default Client;
+export default Client

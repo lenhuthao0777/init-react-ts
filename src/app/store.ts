@@ -8,8 +8,8 @@ export const store = configureStore({
   reducer: {
     loading: loadingSlice,
     home: homeSlice,
-    userInformation: userInfoSlice,
-  },
+    userInformation: userInfoSlice
+  }
 })
 
 export type RootState = ReturnType<typeof store.getState>

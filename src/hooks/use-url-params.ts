@@ -1,46 +1,46 @@
-import { removeEmpty } from '@/src/lib/Utils';
-import { useEffect, useMemo, useState } from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { removeEmpty } from '@/src/lib/Utils'
+import { useEffect, useMemo, useState } from 'react'
+import { useLocation, useSearchParams } from 'react-router-dom'
 
 const UseUrlParams = (initParams?: any) => {
-  const [data, setData] = useState();
+  const [data, setData] = useState()
 
-  const [searchParams, setSearchPrams] = useSearchParams();
+  const [searchParams, setSearchPrams] = useSearchParams()
 
-  const location = useLocation();
+  const location = useLocation()
 
-  const params = Object.fromEntries([...searchParams]);
+  const params = Object.fromEntries([...searchParams])
 
-  const pathName: string = location.pathname;
+  const pathName: string = location.pathname
 
   const objQueries: any = useMemo(() => {
-    let result: any = {
+    const result: any = {
       page: 1,
       page_size: 10,
-      ...params,
-    };
+      ...params
+    }
 
-    return removeEmpty(result);
-  }, [params]);
+    return removeEmpty(result)
+  }, [params])
 
   const setQueries = (queries: any) => {
-    setSearchPrams({ ...initParams, ...objQueries, ...queries });
-  };
+    setSearchPrams({ ...initParams, ...objQueries, ...queries })
+  }
 
   const selectOptions = (value: any, option: any, filed: string) => {
-    setQueries({ [filed]: value });
-  };
+    setQueries({ [filed]: value })
+  }
 
   useEffect(() => {
-    setQueries({ ...initParams });
-  }, []);
+    setQueries({ ...initParams })
+  }, [])
 
   return {
     pathName,
     objQueries,
     setQueries,
-    selectOptions,
-  };
-};
+    selectOptions
+  }
+}
 
-export default UseUrlParams;
+export default UseUrlParams

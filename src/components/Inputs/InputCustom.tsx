@@ -1,18 +1,18 @@
-import { Input } from 'antd';
-import React, { ReactNode, useMemo } from 'react';
-import FormItem from '../Form/FormItem';
-import { Validations } from '@/src/lib/Validation';
+import { Input } from 'antd'
+import React, { ReactNode, useMemo } from 'react'
+import FormItem from '../Form/FormItem'
+import { Validations } from '@/src/lib/Validation'
 
 interface PropsInputCustom {
-  disabled?: boolean;
-  className?: string;
-  placeholder?: string;
-  label?: string;
-  name: string;
-  prefix?: ReactNode;
-  rules: Array<string>;
-  type?: string;
-  hdChange?: (name: string, value: string) => void;
+  disabled?: boolean
+  className?: string
+  placeholder?: string
+  label?: string
+  name: string
+  prefix?: ReactNode
+  rules: Array<string>
+  type?: string
+  hdChange?: (name: string, value: string) => void
 }
 
 const InputCustom: React.FC<PropsInputCustom> = ({
@@ -24,29 +24,29 @@ const InputCustom: React.FC<PropsInputCustom> = ({
   label,
   rules,
   type = 'text',
-  hdChange,
+  hdChange
 }) => {
-  const { validation } = Validations((label as string) || name);
+  const { validation } = Validations((label as string) || name)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
 
-    hdChange && hdChange(name, value);
-  };
+    hdChange && hdChange(name, value)
+  }
 
   const handleRules = useMemo(() => {
-    const ans = [];
-    let idx = 0;
+    const ans = []
+    let idx = 0
 
-    for (let [key, value] of Object.entries(validation)) {
+    for (const [key, value] of Object.entries(validation)) {
       if (rules[idx] === String(key)) {
-        ans.push(value);
-        idx++;
+        ans.push(value)
+        idx++
       }
     }
 
-    return ans;
-  }, [validation]);
+    return ans
+  }, [validation])
 
   return (
     <FormItem label={label} name={name} rules={handleRules}>
@@ -59,7 +59,7 @@ const InputCustom: React.FC<PropsInputCustom> = ({
         onChange={handleChange}
       />
     </FormItem>
-  );
-};
+  )
+}
 
-export default InputCustom;
+export default InputCustom

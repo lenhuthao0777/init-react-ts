@@ -9,17 +9,12 @@ interface TableBaseProps {
 
 const TableBase: React.FC<TableBaseProps> = ({ header, dataSource }) => {
   const { t } = useTranslation()
-  console.log(dataSource);
-  
+  console.log(dataSource)
 
   return (
     <table>
       <thead>
-        <tr>
-          {header?.map((item) => (
-            <th key={item.title}>{item.title}</th>
-          ))}
-        </tr>
+        <tr>{header?.map((item) => <th key={item.title}>{item.title}</th>)}</tr>
       </thead>
       <tbody>
         {/* {dataSource.map((item, index) => (

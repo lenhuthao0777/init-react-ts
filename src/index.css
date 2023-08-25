@@ -2,24 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-*
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 body {
-	margin: 0;
-	font-family: "Poppins", sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	font-size: 14px;
-	color: #001858;
-	background-color: #f1f2f6;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  color: #001858;
+  background-color: #f1f2f6;
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 html,
@@ -103,12 +102,12 @@ time,
 mark,
 audio,
 video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	vertical-align: baseline;
-	-webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  -webkit-font-smoothing: antialiased;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -122,51 +121,51 @@ hgroup,
 menu,
 nav,
 section {
-	display: block;
+  display: block;
 }
 
 body {
-	line-height: 1;
+  line-height: 1;
 }
 
 ol,
 ul {
-	list-style: none;
+  list-style: none;
 }
 
 blockquote,
 q {
-	quotes: none;
+  quotes: none;
 }
 
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-	content: "";
-	content: none;
+  content: '';
+  content: none;
 }
 
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 .container {
-	max-width: 1340px;
-	margin: 0 auto;
-	padding: 0;
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0;
 }
 
-.itemCenter{
-	display: flex;
-	align-items: center;
-	justify-content: center;
+.itemCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.borderNone{
-	border: none;
-	outline: none;
+.borderNone {
+  border: none;
+  outline: none;
 }
-.bgTran{
-	background: transparent;
+.bgTran {
+  background: transparent;
 }

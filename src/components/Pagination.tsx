@@ -8,12 +8,7 @@ type TPageProps = {
   onChange?: (page: any, pageSize: any) => void
 }
 
-const PaginationCustom: React.FC<TPageProps> = ({
-  page = 1,
-  total_page = 10,
-  page_size = 10,
-  onChange,
-}) => {
+const PaginationCustom: React.FC<TPageProps> = ({ page = 1, total_page = 10, page_size = 10, onChange }) => {
   const [currPage, setCurrPage] = useState<number>(page)
 
   const change = (page: any, pageSize: any) => {

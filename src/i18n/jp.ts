@@ -12,8 +12,8 @@ const jp = {
     email: 'Eメール',
     create_at: 'で作成',
     update_at: 'で更新',
-    logout: 'ログアウト',
-  },
+    logout: 'ログアウト'
+  }
 }
 
 export default jp

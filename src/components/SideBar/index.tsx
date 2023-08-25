@@ -1,10 +1,10 @@
-import { HomeOutlined } from '@ant-design/icons';
+import { HomeOutlined } from '@ant-design/icons'
 // Components
-import { useTranslation } from 'react-i18next';
-import MenuItem from './MenuItem';
+import { useTranslation } from 'react-i18next'
+import MenuItem from './MenuItem'
 
 const SideBar: any = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   const menuSideBar = [
     {
@@ -15,33 +15,28 @@ const SideBar: any = () => {
         {
           label: 'Home',
           path: 'home',
-          isPrivate: false,
+          isPrivate: false
         },
         {
           label: 'Profile',
           path: 'profile',
-          isPrivate: false,
-        },
-      ],
-    },
-  ];
+          isPrivate: false
+        }
+      ]
+    }
+  ]
 
   return (
     <div className='fixed top-20 left-0 h-full w-72 bg-white overflow-hidden shadow-sm z-10'>
       <div className='overflow-auto'>
         <ul>
           {menuSideBar.map((item) => (
-            <MenuItem
-              key={item.label}
-              label={item.label}
-              icon={item.icon}
-              subMenu={item.sub}
-            />
+            <MenuItem key={item.label} label={item.label} icon={item.icon} subMenu={item.sub} />
           ))}
         </ul>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SideBar;
+export default SideBar

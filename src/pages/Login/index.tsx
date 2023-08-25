@@ -40,7 +40,7 @@ const Login = () => {
 
   const [userInfo, setUserInfo] = useState<TUserLogin>({
     email: '',
-    password: '',
+    password: ''
   })
 
   const auth = useAuth()
@@ -54,7 +54,7 @@ const Login = () => {
       await setCookie(
         'userInfo',
         JSON.stringify({
-          data,
+          data
         })
       )
       await showToast('success', message)
@@ -64,8 +64,8 @@ const Login = () => {
     } catch (error: AxiosError | any) {
       const {
         response: {
-          data: { message },
-        },
+          data: { message }
+        }
       } = error
 
       showToast('error', message)
@@ -76,14 +76,14 @@ const Login = () => {
     const target: HTMLInputElement = e.target
     setUserInfo({
       ...userInfo,
-      [`${target.name}`]: target.value,
+      [`${target.name}`]: target.value
     })
   }
 
   useEffect(() => {
     if (auth) {
       const { redirectTo } = QueryString.parse(location.search, {
-        ignoreQueryPrefix: true,
+        ignoreQueryPrefix: true
       })
       if (redirectTo) {
         redirect(redirectTo as string)
@@ -97,9 +97,7 @@ const Login = () => {
       <div className='flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
         <div className='w-full max-w-md space-y-8'>
           <div>
-            <h2 className='mt-6 text-center text-3xl font-bold tracking-tight'>
-              Sign in to your account
-            </h2>
+            <h2 className='mt-6 text-center text-3xl font-bold tracking-tight'>Sign in to your account</h2>
           </div>
           <div className='mt-8 space-y-6'>
             <input type='hidden' name='remember' defaultValue='true' />
@@ -148,10 +146,7 @@ const Login = () => {
               </div>
 
               <div className='text-sm'>
-                <a
-                  href='#'
-                  className='font-medium text-indigo-600 hover:text-indigo-500'
-                >
+                <a href='#' className='font-medium text-indigo-600 hover:text-indigo-500'>
                   Forgot your password?
                 </a>
               </div>

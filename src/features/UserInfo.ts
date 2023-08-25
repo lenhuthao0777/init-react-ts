@@ -6,9 +6,9 @@ import { eraseCookie, getCookie, setCookie } from '../lib/Utils'
 const initialState: any | null = {
   user: {
     email: '',
-    password: '',
+    password: ''
   },
-  role: [],
+  role: []
 }
 
 export const userInfoSlice = createSlice({
@@ -17,15 +17,15 @@ export const userInfoSlice = createSlice({
   reducers: {
     login: (state, action: PayloadAction<UserInfo>) => {
       state.user = {
-        ...action.payload,
+        ...action.payload
       }
     },
 
     logout: (state: UserInfo | null) => {
       eraseCookie('userInfo')
       state = null
-    },
-  },
+    }
+  }
 })
 
 export const { login, logout } = userInfoSlice.actions

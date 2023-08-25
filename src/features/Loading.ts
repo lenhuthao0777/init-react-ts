@@ -6,7 +6,7 @@ export interface InitialState {
 }
 
 const initialState: InitialState = {
-  isLoading: false,
+  isLoading: false
 }
 
 export const loadingSlice = createSlice({
@@ -15,8 +15,8 @@ export const loadingSlice = createSlice({
   reducers: {
     showLoader: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload
-    },
-  },
+    }
+  }
 })
 
 export const { showLoader } = loadingSlice.actions

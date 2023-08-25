@@ -31,9 +31,7 @@ const Collapse: FC<TPropsType> = ({
 }) => {
   const transition = `height ${transitionDuration} ${transitionTimingFunction}`
 
-  const [renderChildren, setRenderChildren] = useState<boolean>(
-    lazy ? open : true
-  )
+  const [renderChildren, setRenderChildren] = useState<boolean>(lazy ? open : true)
 
   const containRef = useRef<any>(null)
 
@@ -115,7 +113,7 @@ const Collapse: FC<TPropsType> = ({
   return (
     <div
       style={{
-        transition: instant || firstRender.current ? undefined : transition,
+        transition: instant || firstRender.current ? undefined : transition
       }}
       ref={containRef}
       {...restProps}

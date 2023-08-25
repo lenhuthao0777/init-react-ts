@@ -10,7 +10,7 @@ const AdminRoute = {
   id: uuid(),
   path: '/admin',
   element: <Admin />,
-  routes: [HomeRoute, ProfileRoute],
+  routes: [HomeRoute, ProfileRoute]
 }
 
 export default AdminRoute

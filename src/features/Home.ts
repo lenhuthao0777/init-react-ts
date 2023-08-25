@@ -6,7 +6,7 @@ export interface InitialState {
 }
 
 const initialState: InitialState = {
-  data: [],
+  data: []
 }
 
 export const homeSlice = createSlice({
@@ -15,8 +15,8 @@ export const homeSlice = createSlice({
   reducers: {
     getData: (state, action: PayloadAction<any>) => {
       state.data = action.payload
-    },
-  },
+    }
+  }
 })
 
 export const { getData } = homeSlice.actions

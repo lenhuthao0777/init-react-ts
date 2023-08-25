@@ -13,9 +13,9 @@ const NewsRoute = {
       path: '',
       element: <News />,
       loader: () => {},
-      index: true,
-    },
-  ],
+      index: true
+    }
+  ]
 }
 
 export default NewsRoute

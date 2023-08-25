@@ -1,28 +1,28 @@
-import { cn, eraseCookie } from '../lib/Utils';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { includes } from 'lodash';
-import { useTranslation } from 'react-i18next';
-import Logo from './Logo';
-import { Fragment, ReactNode, useContext } from 'react';
-import { UserOutlined } from '@ant-design/icons';
-import { Avatar, Popover } from 'antd';
-import { AuthContext } from '../contexts/auth.context';
+import { cn, eraseCookie } from '../lib/Utils'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { includes } from 'lodash'
+import { useTranslation } from 'react-i18next'
+import Logo from './Logo'
+import { Fragment, ReactNode, useContext } from 'react'
+import { UserOutlined } from '@ant-design/icons'
+import { Avatar, Popover } from 'antd'
+import { AuthContext } from '../contexts/Auth.context'
 function Nav() {
-  const [user, isLoading] = useContext(AuthContext);
+  const [user, isLoading] = useContext(AuthContext)
 
-  const location = useLocation();
+  const location = useLocation()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
-  const admin = includes(location.pathname, 'admin');
+  const admin = includes(location.pathname, 'admin')
 
   const Logout = () => {
-    eraseCookie('userInfo');
+    eraseCookie('userInfo')
 
-    navigate('/login');
-  };
+    navigate('/login')
+  }
 
   const content = (
     <div>
@@ -31,51 +31,42 @@ function Nav() {
       </p>
       <p>{t('profile')}</p>
     </div>
-  );
+  )
 
   const menus: Array<{ id: number; title: string | ReactNode }> = [
     {
       id: 1,
-      title: t('job'),
+      title: t('job')
     },
     {
       id: 2,
-      title: t('application'),
+      title: t('application')
     },
     {
       id: 3,
-      title: t('company'),
+      title: t('company')
     },
     {
       id: 4,
-      title: t('tool'),
+      title: t('tool')
     },
     {
       id: 5,
       title: (
         <Popover placement='topRight' content={content} title={user?.email}>
           {user ? (
-            <img
-              src={user?.profile?.avatar?.url}
-              alt='img'
-              className='w-6 h-6 rounded-full object-cover'
-            />
+            <img src={user?.profile?.avatar?.url} alt='img' className='w-6 h-6 rounded-full object-cover' />
           ) : (
-            <Avatar
-              className='cursor-pointer'
-              icon={<UserOutlined size={24} />}
-            />
+            <Avatar className='cursor-pointer' icon={<UserOutlined size={24} />} />
           )}
         </Popover>
-      ),
-    },
-  ];
+      )
+    }
+  ]
 
   return (
     <header
-      className={cn(
-        'fixed top-0 left-0 flex items-center justify-between w-full bg-white h-20 px-20 shadow z-10'
-      )}
+      className={cn('fixed top-0 left-0 flex items-center justify-between w-full bg-white h-20 px-20 shadow z-10')}
     >
       <div className='flex items-center'>
         <Fragment>
@@ -97,7 +88,7 @@ function Nav() {
         ) : null}
       </div>
     </header>
-  );
+  )
 }
 
-export default Nav;
+export default Nav

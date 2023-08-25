@@ -20,9 +20,9 @@ const en = {
     validate: {
       require: '{{field}} is not empty',
       decimal: '{{field}} please enter a decimal number',
-      number: '{{field}} please enter a number',
+      number: '{{field}} please enter a number'
     }
-  },
+  }
 }
 
 export default en

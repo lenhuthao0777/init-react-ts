@@ -22,7 +22,7 @@ const Btn: FC<CButtonProps> = ({
   danger,
   children,
   disable,
-  onClick,
+  onClick
 }) => {
   return (
     <div className='flex items-center'>
@@ -36,14 +36,9 @@ const Btn: FC<CButtonProps> = ({
         text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible: outline-offset-2 px-3 py-1 rounded
         `,
           fullWith && 'w-full',
-          secondary
-            ? 'text-gray-700 hover:opacity-10 transition border border-sky-500'
-            : 'text-white',
-          danger &&
-            'bg-rose-500 hover:bg-rose-600 focus-visible:outline-rose-600',
-          !secondary &&
-            !danger &&
-            ' bg-sky-500 hover:bg-sky-600 focus-visible:outline-sky-600'
+          secondary ? 'text-gray-700 hover:opacity-10 transition border border-sky-500' : 'text-white',
+          danger && 'bg-rose-500 hover:bg-rose-600 focus-visible:outline-rose-600',
+          !secondary && !danger && ' bg-sky-500 hover:bg-sky-600 focus-visible:outline-sky-600'
         )}
       >
         {children ? children : label}

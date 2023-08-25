@@ -1,17 +1,17 @@
-import Btn from '@/src/components/ButtonCustom';
-import FormCustom from '@/src/components/Form/Form';
-import InputCustom from '@/src/components/Inputs/InputCustom';
-import UseUrlParams from '@/src/hooks/use-url-params';
-import React from 'react';
+import Btn from '@/src/components/ButtonCustom'
+import FormCustom from '@/src/components/Form/Form'
+import InputCustom from '@/src/components/Inputs/InputCustom'
+import UseUrlParams from '@/src/hooks/use-url-params'
+import React from 'react'
 
 const News: React.FC = () => {
-  const { objQueries } = UseUrlParams();
+  const { objQueries } = UseUrlParams()
 
-  console.log(objQueries);
+  console.log(objQueries)
 
   const onSubmit = (data: any) => {
-    console.log(data);
-  };
+    console.log(data)
+  }
 
   return (
     <FormCustom onSubmit={onSubmit}>
@@ -20,7 +20,7 @@ const News: React.FC = () => {
 
       <Btn type='submit' label='Submit' />
     </FormCustom>
-  );
-};
+  )
+}
 
-export default News;
+export default News

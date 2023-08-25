@@ -6,5 +6,5 @@ export enum ROUTER_ENUM {
   PROFILE = '/profile',
   DASHBOARD = '/dash-board',
   NEWS = '/news',
-  NOT_FOUND = '*',
+  NOT_FOUND = '*'
 }

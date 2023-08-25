@@ -4,8 +4,8 @@ import React from 'react'
 function index() {
   const state = useAppSelector((state) => state.userInformation)
 
-  console.log(state);
-  
+  console.log(state)
+
   return <div>Profiles</div>
 }
 

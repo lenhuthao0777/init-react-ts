@@ -1,10 +1,5 @@
 import { lazy } from 'react'
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  Routes
-} from 'react-router-dom'
+import { createBrowserRouter, createRoutesFromElements, Route, Routes } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 // ENUM
 import { ROUTER_ENUM } from './Router.enum'
@@ -50,17 +45,17 @@ const routers = [
             path: ROUTER_ENUM.DEFAULT,
             element: <Login />,
             loader: () => {},
-            index: false,
-          },
-        ],
-      },
-    ],
+            index: false
+          }
+        ]
+      }
+    ]
   },
   {
     id: uuid(),
     path: ROUTER_ENUM.NOT_FOUND,
-    element: <PageNotFound />,
-  },
+    element: <PageNotFound />
+  }
 ]
 
 const ListRouters = routers.map((route) => (
@@ -70,12 +65,7 @@ const ListRouters = routers.map((route) => (
           <Route key={item.id} path={item.path}>
             {item.children
               ? item.children.map((child) => (
-                  <Route
-                    key={child.id}
-                    index={child.index}
-                    path={child.path}
-                    element={child.element}
-                  />
+                  <Route key={child.id} index={child.index} path={child.path} element={child.element} />
                 ))
               : null}
           </Route>
