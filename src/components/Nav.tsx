@@ -1,4 +1,4 @@
-import { cn, eraseCookie } from '../lib/Utils'
+import { cn, eraseCookie } from '@src/lib/Utils'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { includes } from 'lodash'
 import { useTranslation } from 'react-i18next'
@@ -6,9 +6,13 @@ import Logo from './Logo'
 import { Fragment, ReactNode, useContext } from 'react'
 import { UserOutlined } from '@ant-design/icons'
 import { Avatar, Popover } from 'antd'
-import { AuthContext } from '../contexts/Auth.context'
+import { AuthContext } from '@src/contexts/Auth.context'
+import { useAppDispatch } from '@src/store/hook'
+import { logout } from '@src/store/features/Auth'
 function Nav() {
   const [user, isLoading] = useContext(AuthContext)
+
+  const dispatch = useAppDispatch()
 
   const location = useLocation()
 
@@ -19,8 +23,8 @@ function Nav() {
   const admin = includes(location.pathname, 'admin')
 
   const Logout = () => {
+    dispatch(logout)
     eraseCookie('userInfo')
-
     navigate('/login')
   }
 

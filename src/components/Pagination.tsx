@@ -1,14 +1,14 @@
 import { Pagination } from 'antd'
 import React, { memo, useState } from 'react'
 
-type TPageProps = {
+interface PageProps {
   page?: number | undefined
   total_page?: number | undefined
   page_size?: number | undefined
   onChange?: (page: any, pageSize: any) => void
 }
 
-const PaginationCustom: React.FC<TPageProps> = ({ page = 1, total_page = 10, page_size = 10, onChange }) => {
+const PaginationCustom: React.FC<PageProps> = ({ page = 1, total_page = 10, page_size = 10, onChange }) => {
   const [currPage, setCurrPage] = useState<number>(page)
 
   const change = (page: any, pageSize: any) => {

@@ -68,4 +68,4 @@ const apiService = {
   delete: <T>(url: string, obj?: object) => axiosClient.delete<T>(url, obj)
 }
 
-export default apiService
+export { apiService, axiosClient }

@@ -1,6 +1,6 @@
 import { Spin } from 'antd'
 import { css } from '@emotion/react'
-import { useAppSelector } from '../app/hook'
+import { useAppSelector } from '../store/hook'
 function Loading() {
   const isLoading = useAppSelector((state) => state.loading.isLoading)
 

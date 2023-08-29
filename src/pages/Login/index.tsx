@@ -5,10 +5,9 @@ import styled from 'styled-components'
 import { AxiosError } from 'axios'
 
 import { getCookie, setCookie, showToast } from '../../lib/Utils'
-import { ROUTER_ENUM } from '@src/routers/Router.enum'
-import Auth from '@src/apis/Auth.api'
-import { useAppDispatch } from '@app/hook'
-import { login } from '@/src/features/UserInfo'
+import { useAppDispatch } from '@/src/store/hook'
+import { setCredential } from '@/src/store/features/Auth'
+import { useLoginMutation } from '@/src/store/features/AuthApi'
 
 // Style
 const Container = styled.div`
@@ -47,20 +46,17 @@ const Login = () => {
 
   const navigate = useNavigate()
 
+  const [login, { isLoading }] = useLoginMutation()
+
   const handleLogin = async () => {
     try {
-      const { status, message, data } = await Auth.login(userInfo)
-      dispatch(login(data))
-      await setCookie(
-        'userInfo',
-        JSON.stringify({
-          data
-        })
-      )
-      await showToast('success', message)
-      if (status === 200) {
-        navigate('/admin/home')
-      }
+      const userData = await login(userInfo).unwrap()
+
+      dispatch(setCredential({ ...userData.data, email: userInfo.email }))
+
+      navigate('/')
+
+      await showToast('success', 'test')
     } catch (error: AxiosError | any) {
       const {
         response: {

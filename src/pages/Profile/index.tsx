@@ -1,4 +1,4 @@
-import { useAppSelector } from '@/src/app/hook'
+import { useAppSelector } from '@/src/store/hook'
 import React from 'react'
 
 function index() {

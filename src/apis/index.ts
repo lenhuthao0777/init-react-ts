@@ -1,4 +1,4 @@
-import apiService from '@/src/lib/AxiosClient'
+import {apiService} from '@/src/lib/AxiosClient'
 import { TApiResponse } from '@src/types/global.type'
 
 export default class CommonApi {

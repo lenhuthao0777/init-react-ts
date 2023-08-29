@@ -37,7 +37,8 @@
     "no-unsafe-optional-chaining": "error",
     "react/no-unknown-property": "off",
     "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": "warn",
-    "@typescript-eslint/ban-types": "warn"
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/ban-types": "warn",
+    "@typescript-eslint/no-namespace": "off"
   }
 }

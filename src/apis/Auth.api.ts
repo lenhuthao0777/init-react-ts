@@ -1,4 +1,4 @@
-import apiService from '@/src/lib/AxiosClient'
+import { apiService } from '@/src/lib/AxiosClient'
 import CommonApi from '.'
 
 class Auth extends CommonApi {

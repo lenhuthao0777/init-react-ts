@@ -22,7 +22,7 @@
       "@/*": ["*"],
       "@components/*": ["src/components/*"],
       "@pages/*": ["src/pages/*"],
-      "@app/*": ["src/app/*"],
+      "@app/*": ["src/store/*"],
       "@layouts/*": ["src/layouts/*"],
       "@src/*": ["src/*"]
     }
