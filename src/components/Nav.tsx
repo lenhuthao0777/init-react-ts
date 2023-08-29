@@ -9,6 +9,8 @@ import { Avatar, Popover } from 'antd'
 import { AuthContext } from '@src/contexts/Auth.context'
 import { useAppDispatch } from '@src/store/hook'
 import { logout } from '@src/store/features/Auth'
+import { useGetUserQuery } from '@src/store/features/AuthApi'
+
 function Nav() {
   const [user, isLoading] = useContext(AuthContext)
 
@@ -23,8 +25,8 @@ function Nav() {
   const admin = includes(location.pathname, 'admin')
 
   const Logout = () => {
-    dispatch(logout)
-    eraseCookie('userInfo')
+    dispatch(logout())
+    // eraseCookie('userInfo')
     navigate('/login')
   }
 

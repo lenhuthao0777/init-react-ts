@@ -16,7 +16,7 @@ export const auth = createSlice({
       state.user = {
         ...action.payload
       }
-
+ 
       setCookie(
         'userInfo',
         JSON.stringify({

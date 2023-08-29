@@ -14,9 +14,6 @@ const News: React.FC = () => {
     console.log(data)
   }
 
-  console.log(data);
-  
-
   return (
     <FormCustom onSubmit={onSubmit}>
       <InputCustom label='Test' name='test' rules={['required', 'decimal']} />

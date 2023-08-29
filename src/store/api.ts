@@ -1,13 +1,14 @@
+import { getCookie } from '@src/lib/Utils'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { logout } from './features/Auth'
 
 const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_API_URL_LOCAL,
-  prepareHeaders: (headers, { getState }) => {
-    const session: any = getState()
+  prepareHeaders: (headers) => {
+    const session: any = JSON.parse(getCookie('userInfo'))
 
-    if (session?.auth.user) {
-      headers.set('authorization', `Bearer ${session?.auth?.user?.token}`)
+    if (session?.accessToken) {
+      headers.set('authorization', `Bearer ${session?.accessToken}`)
     }
     return headers
   }
@@ -16,7 +17,7 @@ const baseQuery = fetchBaseQuery({
 const baseQueryWithAuth = async (args: any, api: any, extraOptions: any) => {
   const result = await baseQuery(args, api, extraOptions)
 
-  if (result?.error?.status === 403) {
+  if (result?.error?.status === 401) {
     api.dispatch(logout())
   }
 

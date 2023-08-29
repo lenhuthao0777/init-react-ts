@@ -4,6 +4,7 @@ import loadingSlice from './features/Loading'
 import homeSlice from './features/Home'
 import auth from './features/Auth'
 import { api } from './api'
+import { setupListeners } from '@reduxjs/toolkit/dist/query'
 
 export const store = configureStore({
   reducer: {
@@ -15,6 +16,8 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([api.middleware]),
   devTools: true
 })
+
+setupListeners(store.dispatch)
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch

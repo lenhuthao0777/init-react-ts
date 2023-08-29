@@ -8,8 +8,15 @@ export const AuthApi = api.injectEndpoints({
         method: 'POST',
         body: { ...credentials }
       })
+    }),
+
+    getUser: build.query<any, string>({
+      query: (email: any) => ({
+        url: `/auth/me/${email}`,
+        method: 'GET'
+      })
     })
   })
 })
 
-export const { useLoginMutation } = AuthApi
+export const { useGetUserQuery, useLoginMutation } = AuthApi
