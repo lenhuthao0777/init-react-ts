@@ -1,8 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { UserInfo } from '@src/types/global.type'
-import { eraseCookie, getCookie, setCookie } from '@src/lib/Utils'
+import { eraseCookie, setCookie } from '@src/lib/Utils'
 
-const initialState: any | null = {
+type AuthType = {
+  user: any | null
+}
+
+const initialState: AuthType = {
   user: null
 }
 
@@ -16,7 +20,7 @@ export const auth = createSlice({
       state.user = {
         ...action.payload
       }
- 
+
       setCookie(
         'userInfo',
         JSON.stringify({

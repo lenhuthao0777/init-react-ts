@@ -1,6 +1,6 @@
 import { useAppSelector } from '@/src/store/hook'
 function Home() {
-  const state = useAppSelector((state) => state.userInformation)
+  const state = useAppSelector((state) => state.auth)
 
   console.log(state)
 

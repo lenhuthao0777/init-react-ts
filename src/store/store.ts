@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
+import { setupListeners } from '@reduxjs/toolkit/dist/query'
 
 import loadingSlice from './features/Loading'
 import homeSlice from './features/Home'
 import auth from './features/Auth'
 import { api } from './api'
-import { setupListeners } from '@reduxjs/toolkit/dist/query'
 
 export const store = configureStore({
   reducer: {
