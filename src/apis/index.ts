@@ -1,28 +1,27 @@
-import apiService from '@src/services/AxiosClient'
-import { TApiResponse } from '@src/types/global.type'
+import Client from '../services/AxiosClient';
 
-export default class CommonApi {
-  static baseUrl: string = ''
+class Base extends Client {
+  endpoint = '';
 
-  static async list(query?: any): Promise<any> {
-    return apiService
-      .get(`${this.baseUrl}`, { params: query })
-      .then((res) => res.data)
+  index<T>(params: any) {
+    return this.get<T>(this.endpoint, { params }).then((res) => res.data);
   }
 
-  static async detail(id: number | string): Promise<any> {
-    return apiService.get(`${this.baseUrl}/${id}`)
+  show<T>(query: any) {
+    return this.get<T>(`${this.endpoint}/${query}`);
   }
 
-  static async create(body: any): Promise<any> {
-    return apiService.post(`${this.baseUrl}`, body)
+  store<T>(values: any) {
+    return this.post<T>(this.endpoint, values);
   }
 
-  static async edit(body: any): Promise<any> {
-    return apiService.put(`${this.baseUrl}`, body)
+  update<T>(values: any) {
+    return this.patch<T>(this.endpoint, values);
   }
 
-  static async delete(id: string): Promise<any> {
-    return apiService.delete(`${this.baseUrl}/${id}`)
+  destroy<T>(query: any) {
+    return this.delete<T>(`${this.endpoint}/${query}`);
   }
 }
+
+export default Base;

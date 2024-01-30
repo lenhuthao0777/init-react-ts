@@ -1,4 +1,4 @@
-import { lazy } from 'react'
+import { lazy, ReactNode } from 'react'
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -16,18 +16,19 @@ const Login = lazy(() => import('@pages/Login'))
 const PageNotFound = lazy(() => import('@pages/PageNotFound'))
 
 type router = {
+  id: string
   path: string
-  element: () => JSX.Element
+  element: () => ReactNode
   loader: () => void
-  errorElement: () => JSX.Element
+  errorElement: () => ReactNode
   children: children[]
 }
 
 type children = {
   path: string
-  element: () => JSX.Element
+  element: () => ReactNode
   loader: () => void
-  errorElement: () => JSX.Element
+  errorElement: () => ReactNode
 }
 
 const routers = [

@@ -1,8 +1,8 @@
-import apiService from '@src/services/AxiosClient'
-import CommonApi from '.'
+import apiService from '@src/services/AxiosClient';
+import Base from './index';
 
-class HomeService extends CommonApi {
-  static baseUrl = 'race'
+class HomeService extends Base {
+  baseUrl = 'race';
 }
 
-export default HomeService
+export default HomeService;
